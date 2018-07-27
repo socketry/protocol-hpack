@@ -58,17 +58,17 @@ RSpec.describe HTTP::HPACK::Compressor do
 			['without huffman', :never, 0],
 		].each do |description, huffman, msb|
 			context description do
+				let(:context) {HTTP::HPACK::Context.new(huffman: huffman)}
+				let(:buffer) {String.new.b}
+				
+				subject {HTTP::HPACK::Compressor.new(buffer, context)}
+				let(:decompressor) {HTTP::HPACK::Decompressor.new(buffer, context)}
+				
 				[
 					['ascii codepoints', 'abcdefghij'],
 					['utf-8 codepoints', 'éáűőúöüó€'],
 					['long utf-8 strings', 'éáűőúöüó€' * 100],
 				].each do |datatype, plain|
-					let(:context) {HTTP::HPACK::Context.new(huffman: huffman)}
-					let(:buffer) {String.new.b}
-					
-					subject {HTTP::HPACK::Compressor.new(buffer, context)}
-					let(:decompressor) {HTTP::HPACK::Decompressor.new(buffer, context)}
-					
 					it "should handle #{datatype} #{description}" do
 						subject.write_string(plain)
 						expect(buffer.getbyte(0) & 0x80).to eq msb

@@ -44,10 +44,10 @@ RSpec.describe HTTP::HPACK::Decompressor do
 	let(:buffer) {String.new.b}
 	
 	folders.each do |folder|
-		path = File.expand_path("hpack-test-case/#{folder}", __dir__)
+		root = File.expand_path("hpack-test-case/#{folder}", __dir__)
 		
-		context folder.to_s, if: File.directory?(path) do
-			Dir.glob(File.join(path, "*.json")) do |path|
+		context folder.to_s, if: File.directory?(root) do
+			Dir.glob(File.join(root, "*.json")) do |path|
 				it "should decode #{File.basename(path)}" do
 					story = JSON.parse(File.read(path))
 					
@@ -70,9 +70,9 @@ RSpec.describe HTTP::HPACK::Decompressor do
 	end
 end
 
-RAW_DATA_PATH = File.expand_path('hpack-test-case/raw-data', __dir__)
-
-RSpec.describe HTTP::HPACK::Compressor, if: File.directory?(RAW_DATA_PATH) do
+RSpec.describe HTTP::HPACK::Compressor do
+	root = File.expand_path('hpack-test-case/raw-data', __dir__)
+	
 	let(:buffer) {String.new.b}
 	
 	HTTP::HPACK::MODES.each do |mode, encoding_options|
@@ -81,7 +81,7 @@ RSpec.describe HTTP::HPACK::Compressor, if: File.directory?(RAW_DATA_PATH) do
 			options.update(encoding_options)
 
 			context "with #{mode} mode and table_size #{table_size}" do
-				Dir.glob(File.join(RAW_DATA_PATH, "*.json")) do |path|
+				Dir.glob(File.join(root, "*.json")) do |path|
 					it "should encode #{File.basename(path)}" do
 						story = JSON.parse(File.read(path))
 						cases = story['cases']
