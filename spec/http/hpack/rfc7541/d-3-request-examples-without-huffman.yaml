@@ -1,0 +1,58 @@
+---
+:title: D.3. Request Examples without Huffman
+:type: :request
+:table_size: 4096
+:huffman: :never
+:streams:
+- :wire: 8286 8441 0f77 7777 2e65 7861 6d70 6c65 2e63 6f6d
+  :emitted:
+  - - ":method"
+    - GET
+  - - ":scheme"
+    - http
+  - - ":path"
+    - "/"
+  - - ":authority"
+    - www.example.com
+  :table:
+  - - ":authority"
+    - www.example.com
+  :table_size: 57
+- :wire: 8286 84be 5808 6e6f 2d63 6163 6865
+  :emitted:
+  - - ":method"
+    - GET
+  - - ":scheme"
+    - http
+  - - ":path"
+    - "/"
+  - - ":authority"
+    - www.example.com
+  - - cache-control
+    - no-cache
+  :table:
+  - - cache-control
+    - no-cache
+  - - ":authority"
+    - www.example.com
+  :table_size: 110
+- :wire: 8287 85bf 400a 6375 7374 6f6d 2d6b 6579 0c63 7573 746f 6d2d 7661 6c75 65
+  :emitted:
+  - - ":method"
+    - GET
+  - - ":scheme"
+    - https
+  - - ":path"
+    - "/index.html"
+  - - ":authority"
+    - www.example.com
+  - - custom-key
+    - custom-value
+  :table:
+  - - custom-key
+    - custom-value
+  - - cache-control
+    - no-cache
+  - - ":authority"
+    - www.example.com
+  :table_size: 164
