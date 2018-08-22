@@ -5,14 +5,20 @@ require 'http/hpack/decompressor'
 require 'yaml'
 
 RSpec.describe "RFC7541" do
-	def self.fixtures
+	def self.fixtures(mode)
 		Dir.glob(File.expand_path("rfc7541/*.yaml", __dir__)) do |path|
-			yield YAML::load_file(path)
+			fixture = YAML::load_file(path)
+			
+			if only = fixture[:only]
+				next unless only == mode
+			end
+			
+			yield fixture
 		end
 	end
 	
 	context HTTP::HPACK::Decompressor do
-		fixtures do |example|
+		fixtures(:decompressor) do |example|
 			context example[:title] do
 				example[:streams].size.times do |nth|
 					context "request #{nth + 1}" do
@@ -53,7 +59,7 @@ RSpec.describe "RFC7541" do
 	end
 	
 	context HTTP::HPACK::Compressor do
-		fixtures do |example|
+		fixtures(:compressor) do |example|
 			context example[:title] do
 				example[:streams].size.times do |nth|
 					context "request #{nth + 1}" do

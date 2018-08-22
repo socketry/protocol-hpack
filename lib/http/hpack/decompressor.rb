@@ -140,14 +140,14 @@ module HTTP
 			#
 			# @param buffer [Buffer]
 			# @return [Array] +[[name, value], ...]+
-			def decode
-				list = []
-				
+			def decode(list = [])
 				while !end?
-					list << @context.decode(read_header)
+					if pair = @context.decode(read_header)
+						list << pair
+					end
 				end
 				
-				list.compact
+				return list
 			end
 		end
 	end
