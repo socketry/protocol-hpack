@@ -2,6 +2,8 @@
 
 Provides a compressor and decompressor for HTTP 2.0 headers, HPACK, as defined by [RFC7541](https://tools.ietf.org/html/rfc7541).
 
+[![Build Status](https://secure.travis-ci.com/socketry/protocol-hpack.svg)](http://travis-ci.com/socketry/protocol-hpack)
+
 ## Installation
 
 Add this line to your application's Gemfile:
