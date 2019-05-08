@@ -1,6 +1,6 @@
 
-require 'http/hpack/compressor'
-require 'http/hpack/decompressor'
+require 'protocol/hpack/compressor'
+require 'protocol/hpack/decompressor'
 
 require 'yaml'
 
@@ -17,15 +17,15 @@ RSpec.describe "RFC7541" do
 		end
 	end
 	
-	context HTTP::HPACK::Decompressor do
+	context Protocol::HPACK::Decompressor do
 		fixtures(:decompressor) do |example|
 			context example[:title] do
 				example[:streams].size.times do |nth|
 					context "request #{nth + 1}" do
-						let(:context) {HTTP::HPACK::Context.new(huffman: example[:huffman], table_size: example[:table_size])}
+						let(:context) {Protocol::HPACK::Context.new(huffman: example[:huffman], table_size: example[:table_size])}
 						let(:buffer) {String.new.b}
 						
-						let(:decompressor) {HTTP::HPACK::Decompressor.new(buffer, context)}
+						let(:decompressor) {Protocol::HPACK::Decompressor.new(buffer, context)}
 						
 						before do
 							(0...nth).each do |i|
@@ -58,15 +58,15 @@ RSpec.describe "RFC7541" do
 		end
 	end
 	
-	context HTTP::HPACK::Compressor do
+	context Protocol::HPACK::Compressor do
 		fixtures(:compressor) do |example|
 			context example[:title] do
 				example[:streams].size.times do |nth|
 					context "request #{nth + 1}" do
-						let(:context) {HTTP::HPACK::Context.new(huffman: example[:huffman], table_size: example[:table_size])}
+						let(:context) {Protocol::HPACK::Context.new(huffman: example[:huffman], table_size: example[:table_size])}
 						let(:buffer) {String.new.b}
 						
-						let(:compressor) {HTTP::HPACK::Compressor.new(buffer, context)}
+						let(:compressor) {Protocol::HPACK::Compressor.new(buffer, context)}
 						
 						before do
 							(0...nth).each do |i|

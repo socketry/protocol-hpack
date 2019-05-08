@@ -19,12 +19,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-require 'http/hpack/compressor'
-require 'http/hpack/decompressor'
+require 'protocol/hpack/compressor'
+require 'protocol/hpack/decompressor'
 
 require 'json'
 
-RSpec.describe HTTP::HPACK::Decompressor do
+RSpec.describe Protocol::HPACK::Decompressor do
 	folders = %w(
 		go-hpack
 		haskell-http2-diff
@@ -54,8 +54,8 @@ RSpec.describe HTTP::HPACK::Decompressor do
 					cases = story['cases']
 					table_size = cases[0]['header_table_size'] || 4096
 					
-					context = HTTP::HPACK::Context.new(table_size: table_size)
-					decompressor = HTTP::HPACK::Decompressor.new(buffer, context)
+					context = Protocol::HPACK::Context.new(table_size: table_size)
+					decompressor = Protocol::HPACK::Decompressor.new(buffer, context)
 					
 					cases.each do |c|
 						buffer << [c['wire']].pack('H*').force_encoding(Encoding::BINARY)
@@ -70,12 +70,12 @@ RSpec.describe HTTP::HPACK::Decompressor do
 	end
 end
 
-RSpec.describe HTTP::HPACK::Compressor do
+RSpec.describe Protocol::HPACK::Compressor do
 	root = File.expand_path('hpack-test-case/raw-data', __dir__)
 	
 	let(:buffer) {String.new.b}
 	
-	HTTP::HPACK::MODES.each do |mode, encoding_options|
+	Protocol::HPACK::MODES.each do |mode, encoding_options|
 		[4096, 512].each do |table_size|
 			options = {table_size: table_size}
 			options.update(encoding_options)
@@ -86,9 +86,9 @@ RSpec.describe HTTP::HPACK::Compressor do
 						story = JSON.parse(File.read(path))
 						cases = story['cases']
 						
-						context = HTTP::HPACK::Context.new(**options)
-						compressor = HTTP::HPACK::Compressor.new(buffer, context)
-						decompressor = HTTP::HPACK::Decompressor.new(buffer)
+						context = Protocol::HPACK::Context.new(**options)
+						compressor = Protocol::HPACK::Compressor.new(buffer, context)
+						decompressor = Protocol::HPACK::Decompressor.new(buffer)
 						
 						cases.each do |c|
 							headers = c['headers'].flat_map(&:to_a)

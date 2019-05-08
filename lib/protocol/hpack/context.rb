@@ -21,7 +21,7 @@
 
 require_relative 'huffman'
 
-module HTTP
+module Protocol
 	# Implementation of header compression for HTTP 2.0 (HPACK) format adapted
 	# to efficiently represent HTTP headers in the context of HTTP 2.0.
 	#

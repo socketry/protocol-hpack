@@ -21,7 +21,7 @@
 
 require_relative 'huffman/machine'
 
-module HTTP
+module Protocol
 	module HPACK
 		class CompressionError < RuntimeError
 		end

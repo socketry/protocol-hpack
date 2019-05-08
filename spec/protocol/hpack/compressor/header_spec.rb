@@ -19,13 +19,13 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-require 'http/hpack/compressor'
-require 'http/hpack/decompressor'
+require 'protocol/hpack/compressor'
+require 'protocol/hpack/decompressor'
 
-RSpec.describe HTTP::HPACK::Compressor do
+RSpec.describe Protocol::HPACK::Compressor do
 	let(:buffer) {String.new.b}
 	subject(:compressor) {described_class.new(buffer)}
-	let(:decompressor) {HTTP::HPACK::Decompressor.new(buffer)}
+	let(:decompressor) {Protocol::HPACK::Decompressor.new(buffer)}
 	
 	it 'should handle indexed representation' do
 		headers = {name: 10, type: :indexed}
@@ -41,7 +41,7 @@ RSpec.describe HTTP::HPACK::Compressor do
 		buffer[0] = 0x80.chr(Encoding::BINARY)
 		expect do
 			decompressor.read_header
-		end.to raise_error HTTP::HPACK::CompressionError
+		end.to raise_error Protocol::HPACK::CompressionError
 	end
 	
 	context 'literal w/o indexing representation' do

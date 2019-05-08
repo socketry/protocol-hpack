@@ -18,8 +18,4 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-RSpec.describe HTTP::HPACK do
-	it "has a version number" do
-		expect(HTTP::HPACK::VERSION).not_to be nil
-	end
-end
+require_relative "hpack/version"

@@ -19,10 +19,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-require 'http/hpack/context'
+require 'protocol/hpack/context'
 
-RSpec.describe HTTP::HPACK::Context do
-	let(:context) {HTTP::HPACK::Context.new(table_size: 2048)}
+RSpec.describe Protocol::HPACK::Context do
+	let(:context) {Protocol::HPACK::Context.new(table_size: 2048)}
 
 	it 'should be initialized with empty headers' do
 		expect(context.table).to be_empty

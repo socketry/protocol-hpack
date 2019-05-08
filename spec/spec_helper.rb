@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "http/hpack"
+require "protocol/hpack"
 
 Bundler.require(:test)
 

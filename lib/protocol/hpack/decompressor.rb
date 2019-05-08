@@ -22,7 +22,7 @@
 require_relative 'context'
 require_relative 'huffman'
 
-module HTTP
+module Protocol
 	module HPACK
 		# Responsible for decoding received headers and maintaining compression
 		# context of the opposing peer. Decompressor must be initialized with

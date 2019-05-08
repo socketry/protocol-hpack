@@ -19,10 +19,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-require 'http/hpack/compressor'
-require 'http/hpack/decompressor'
+require 'protocol/hpack/compressor'
+require 'protocol/hpack/decompressor'
 
-RSpec.describe HTTP::HPACK::Compressor do
+RSpec.describe Protocol::HPACK::Compressor do
 	describe '#write_integer' do
 		let(:buffer) {String.new.b}
 		subject {described_class.new(buffer)}
@@ -58,11 +58,11 @@ RSpec.describe HTTP::HPACK::Compressor do
 			['without huffman', :never, 0],
 		].each do |description, huffman, msb|
 			context description do
-				let(:context) {HTTP::HPACK::Context.new(huffman: huffman)}
+				let(:context) {Protocol::HPACK::Context.new(huffman: huffman)}
 				let(:buffer) {String.new.b}
 				
-				subject {HTTP::HPACK::Compressor.new(buffer, context)}
-				let(:decompressor) {HTTP::HPACK::Decompressor.new(buffer, context)}
+				subject {Protocol::HPACK::Compressor.new(buffer, context)}
+				let(:decompressor) {Protocol::HPACK::Decompressor.new(buffer, context)}
 				
 				[
 					['ascii codepoints', 'abcdefghij'],
@@ -80,10 +80,10 @@ RSpec.describe HTTP::HPACK::Compressor do
 		end
 		
 		context 'choosing shorter representation' do
-			let(:context) {HTTP::HPACK::Context.new(huffman: :shorter)}
+			let(:context) {Protocol::HPACK::Context.new(huffman: :shorter)}
 			let(:buffer) {String.new.b}
 			
-			subject {HTTP::HPACK::Compressor.new(buffer, context)}
+			subject {Protocol::HPACK::Compressor.new(buffer, context)}
 			
 			[
 				['日本語', :plain],

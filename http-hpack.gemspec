@@ -1,9 +1,9 @@
 
-require_relative "lib/http/hpack/version"
+require_relative "lib/protocol/hpack/version"
 
 Gem::Specification.new do |spec|
-	spec.name          = "http-hpack"
-	spec.version       = HTTP::HPACK::VERSION
+	spec.name          = "protocol-hpack"
+	spec.version       = Protocol::HPACK::VERSION
 	spec.authors       = ["Samuel Williams"]
 	spec.email         = ["samuel.williams@oriontransfer.co.nz"]
 
@@ -16,7 +16,8 @@ Gem::Specification.new do |spec|
 	
 	spec.require_paths = ["lib"]
 
-	spec.add_development_dependency "bundler", "~> 1.16"
+	spec.add_development_dependency "covered"
+	spec.add_development_dependency "bundler"
 	spec.add_development_dependency "rake", "~> 10.0"
 	spec.add_development_dependency "rspec", "~> 3.0"
 end

@@ -18,9 +18,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-require 'http/hpack/huffman'
+require 'protocol/hpack/huffman'
 
-RSpec.describe HTTP::HPACK::Huffman do
+RSpec.describe Protocol::HPACK::Huffman do
 	huffman_examples = [ # plain, encoded
 		['www.example.com', 'f1e3c2e5f23a6ba0ab90f4ff'],
 		['no-cache',        'a8eb10649cbf'],

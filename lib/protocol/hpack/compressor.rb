@@ -22,7 +22,7 @@
 require_relative 'context'
 require_relative 'huffman'
 
-module HTTP
+module Protocol
 	module HPACK
 		# Predefined options set for Compressor
 		# http://mew.org/~kazu/material/2014-hpack.pdf
