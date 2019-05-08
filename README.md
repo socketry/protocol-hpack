@@ -23,8 +23,10 @@ Or install it yourself as:
 ### Compressing Headers
 
 ```ruby
+require 'protocol/hpack'
+
 buffer = String.new.b
-compressor = HTTP::HPACK::Compressor.new(buffer)
+compressor = Protocol::HPACK::Compressor.new(buffer)
 
 compressor.encode([['content-length', '5']])
 => "\\\x015"
@@ -35,7 +37,11 @@ compressor.encode([['content-length', '5']])
 Reusing `buffer` from above:
 
 ```ruby
-decompressor = HTTP::HPACK::Decompressor.new(buffer)
+require 'protocol/hpack'
+
+# Buffer from above...
+buffer = "\\\x015"
+decompressor = Protocol::HPACK::Decompressor.new(buffer)
 
 decompressor.decode
 => [["content-length", "5"]]
