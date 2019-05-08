@@ -1,4 +1,4 @@
-# HTTP::HPACK
+# Protocol::HPACK
 
 Provides a compressor and decompressor for HTTP 2.0 headers, HPACK, as defined by [RFC7541](https://tools.ietf.org/html/rfc7541).
 
@@ -7,7 +7,7 @@ Provides a compressor and decompressor for HTTP 2.0 headers, HPACK, as defined b
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'http-hpack'
+gem 'protocol-hpack'
 ```
 
 And then execute:
@@ -16,7 +16,7 @@ And then execute:
 
 Or install it yourself as:
 
-	$ gem install http-hpack
+	$ gem install protocol-hpack
 
 ## Usage
 
@@ -53,7 +53,7 @@ decompressor.decode
 
 Released under the MIT license.
 
-Copyright, 2018, by [Samuel G. D. Williams](http://www.codeotaku.com/samuel-williams).  
+Copyright, 2019, by [Samuel G. D. Williams](http://www.codeotaku.com/samuel-williams).  
 Copyright, 2013, by Ilya Grigorik.  
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
