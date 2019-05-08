@@ -1,7 +1,5 @@
-require "bundler/setup"
-require "protocol/hpack"
 
-Bundler.require(:test)
+require 'covered/rspec'
 
 RSpec.configure do |config|
 	# Enable flags like --only-failures and --next-failure
