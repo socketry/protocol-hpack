@@ -20,12 +20,10 @@
 # THE SOFTWARE.
 
 require_relative 'huffman/machine'
+require_relative 'error'
 
 module Protocol
 	module HPACK
-		class CompressionError < RuntimeError
-		end
-		
 		# Implementation of huffman encoding for HPACK
 		#
 		# - http://tools.ietf.org/html/draft-ietf-httpbis-header-compression-10
