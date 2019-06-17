@@ -100,7 +100,7 @@ module Protocol
 			end
 			
 			def huffman
-				@context.options[:huffman]
+				@context.huffman
 			end
 			
 			# Encodes provided value via string literal representation.

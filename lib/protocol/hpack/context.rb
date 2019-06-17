@@ -105,48 +105,38 @@ module Protocol
 				['vary',                        ''],
 				['via',                         ''],
 				['www-authenticate',            ''],
-		 ].each {|pair| pair.each(&:freeze).freeze}.freeze
-
+			].each {|pair| pair.each(&:freeze).freeze}.freeze
+			
+			# Initializes compression context with appropriate client/server defaults and maximum size of the dynamic table.
+			#
+			# @param table [Array] Table of header key-value pairs.
+			# @option huffman [Symbol] One of `:always`, `:never`, `:shorter`. Controls use of compression.
+			# @option index [Symbol] One of `:all`, `:static`, `:never`. Controls use of static/dynamic tables.
+			# @option table_size [Integer] The current maximum dynamic table size.
+			def initialize(table = nil, huffman: :shorter, index: :all, table_size: 4096)
+				@huffman = huffman
+				@index = index
+				
+				@table_size = table_size
+				
+				@table = (table&.dup) || []
+			end
+			
+			def initialize_copy(other)
+				super
+				
+				# This is the only mutable state:
+				@table = @table.dup
+			end
+			
 			# Current table of header key-value pairs.
-			attr_reader :table
-
-			# Current encoding options
-			#
-			#   :table_size  Integer  maximum dynamic table size in bytes
-			#   :huffman     Symbol   :always, :never, :shorter
-			#   :index       Symbol   :all, :static, :never
-			attr_reader :options
-
-			# Initializes compression context with appropriate client/server
-			# defaults and maximum size of the dynamic table.
-			#
-			# @param options [Hash] encoding options
-			#   :table_size  Integer  maximum dynamic table size in bytes
-			#   :huffman     Symbol   :always, :never, :shorter
-			#   :index       Symbol   :all, :static, :never
-			def initialize(**options)
-				default_options = {
-					huffman: :shorter,
-					index: :all,
-					table_size: 4096,
-				}
-				
-				@table = []
-				@options = default_options.merge(options)
-				@limit = @options[:table_size]
-			end
-
-			# Duplicates current compression context
-			# @return [Context]
-			def dup
-				other = Context.new(@options)
-				
-				other.instance_variable_set :@table, @table.dup
-				other.instance_variable_set :@limit, @limit
-				
-				return other
-			end
-
+			attr :table
+			
+			attr :huffman
+			attr :index
+			
+			attr :table_size
+			
 			# Finds an entry in current dynamic table by index.
 			# Note that index is zero-based in this module.
 			#
@@ -219,7 +209,7 @@ module Protocol
 				return emit
 			end
 
-			# Plan header compression according to +@options [:index]+
+			# Plan header compression according to +@index+
 			#  :never   Do not use dynamic table or static table reference at all.
 			#  :static  Use static table only.
 			#  :all     Use all of them.
@@ -230,7 +220,7 @@ module Protocol
 				commands = []
 				
 				# Literals commands are marked with :no_index when index is not used
-				no_index = [:static, :never].include?(@options[:index])
+				no_index = [:static, :never].include?(@index)
 				
 				headers.each do |field, value|
 					command = add_command(field, value)
@@ -247,7 +237,7 @@ module Protocol
 			# Prefer static table over dynamic table.
 			# Prefer exact match over name-only match.
 			#
-			# +@options [:index]+ controls whether to use the dynamic table,
+			# +@index+ controls whether to use the dynamic table,
 			# static table, or both.
 			#  :never   Do not use dynamic table or static table reference at all.
 			#  :static  Use static table only.
@@ -259,7 +249,7 @@ module Protocol
 				exact = nil
 				name_only = nil
 
-				if [:all, :static].include?(@options[:index])
+				if [:all, :static].include?(@index)
 					STATIC_TABLE.each_index do |i|
 						if STATIC_TABLE[i] == header
 							exact ||= i
@@ -269,7 +259,7 @@ module Protocol
 						end
 					end
 				end
-				if [:all].include?(@options[:index]) && !exact
+				if [:all].include?(@index) && !exact
 					@table.each_index do |i|
 						if @table[i] == header
 							exact ||= i + STATIC_TABLE.size
@@ -291,8 +281,8 @@ module Protocol
 
 			# Alter dynamic table size.
 			#  When the size is reduced, some headers might be evicted.
-			def table_size=(size)
-				@limit = size
+			def table_size= size
+				@table_size = size
 				size_check(nil)
 			end
 
@@ -314,7 +304,7 @@ module Protocol
 				@table.unshift(command)
 			end
 
-			# To keep the dynamic table size lower than or equal to @limit,
+			# To keep the dynamic table size lower than or equal to @table_size,
 			# remove one or more entries at the end of the dynamic table.
 			#
 			# @param command [Hash]
@@ -323,14 +313,14 @@ module Protocol
 				cursize = current_table_size
 				cmdsize = command.nil? ? 0 : command[0].bytesize + command[1].bytesize + 32
 
-				while cursize + cmdsize > @limit
+				while cursize + cmdsize > @table_size
 					break if @table.empty?
 
 					e = @table.pop
 					cursize -= e[0].bytesize + e[1].bytesize + 32
 				end
 
-				cmdsize <= @limit
+				cmdsize <= @table_size
 			end
 		end
 	end
