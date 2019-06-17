@@ -333,8 +333,8 @@ module Protocol
 				[0x7fffff0, 27],
 				[0x3ffffee, 26],
 				[0x3fffffff, 30],
-		 ].each(&:freeze).freeze
-
+			].each(&:freeze).freeze
+			
 			ENCODE_TABLE = CODES.map {|c, l| [c].pack('N').unpack('B*').first[-l..-1]}.each(&:freeze).freeze
 		end
 	end
