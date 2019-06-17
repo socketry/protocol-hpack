@@ -83,7 +83,7 @@ RSpec.describe "RFC7541" do
 						end
 						
 						it 'should emit expected bytes' do
-							expect(subject.unpack('H*').first).to eq example[:streams][nth][:wire].gsub(/\s/, '')
+							expect(subject.unpack1('H*')).to eq example[:streams][nth][:wire].gsub(/\s/, '')
 						end
 						
 						it 'should update header table' do

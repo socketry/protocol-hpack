@@ -30,7 +30,7 @@ RSpec.describe Protocol::HPACK::Huffman do
 	context 'encode' do
 		huffman_examples.each do |plain, encoded|
 			it "should encode #{plain} into #{encoded}" do
-				expect(subject.encode(plain).unpack('H*').first).to eq encoded
+				expect(subject.encode(plain).unpack1('H*')).to eq encoded
 			end
 		end
 	end
