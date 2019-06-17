@@ -28,16 +28,20 @@ module Protocol
 		# context of the opposing peer. Decompressor must be initialized with
 		# appropriate starting context based on local role: client or server.
 		class Decompressor
-			def initialize(buffer, context = Context.new)
+			def initialize(buffer, context = Context.new, table_size_limit: nil)
 				@buffer = buffer
 				@context = context
 				@offset = 0
+				
+				@table_size_limit = table_size_limit
 			end
 
 			attr :buffer
 			attr :context
 			attr :offset
-
+			
+			attr :table_size_limit
+			
 			def end?
 				@offset >= @buffer.bytesize
 			end
@@ -49,7 +53,6 @@ module Protocol
 				
 				return byte
 			end
-			
 			
 			def peek_byte
 				@buffer.getbyte(@offset)
@@ -123,6 +126,10 @@ module Protocol
 					header[:name] -= 1
 				when :change_table_size
 					header[:value] = header[:name]
+					
+					if @table_size_limit and header[:value] > @table_size_limit
+						raise CompressionError, "Table size #{header[:value]} exceeds limit #{@table_size_limit}!"
+					end
 				else
 					if (header[:name]).zero?
 						header[:name] = read_string

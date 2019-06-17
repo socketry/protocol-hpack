@@ -20,10 +20,27 @@
 # THE SOFTWARE.
 
 require 'protocol/hpack/decompressor'
+require 'protocol/hpack/compressor'
 
 RSpec.describe Protocol::HPACK::Decompressor do
+	let(:buffer) {String.new.b}
+	let(:compressor) {Protocol::HPACK::Compressor.new(buffer)}
+	
+	context "limited table size" do
+		subject {described_class.new(buffer, table_size_limit: 256)}
+		
+		it 'should reject table size update if exceed limit' do
+			expect(subject.table_size_limit).to be == 256
+			
+			compressor.write_header({type: :change_table_size, value: 512})
+			
+			expect do
+				subject.read_header
+			end.to raise_error(Protocol::HPACK::CompressionError, /limit/)
+		end
+	end
+	
 	describe '#read_integer' do
-		let(:buffer) {String.new.b}
 		subject {described_class.new(buffer)}
 		
 		context '0-bit prefix' do
