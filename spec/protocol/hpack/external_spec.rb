@@ -44,7 +44,7 @@ RSpec.describe Protocol::HPACK::Decompressor do
 	let(:buffer) {String.new.b}
 	
 	folders.each do |folder|
-		root = File.expand_path("hpack-test-case/#{folder}", __dir__)
+		root = File.expand_path("fixtures/#{folder}", __dir__)
 		
 		context folder.to_s, if: File.directory?(root) do
 			Dir.glob(File.join(root, "*.json")) do |path|
@@ -71,7 +71,7 @@ RSpec.describe Protocol::HPACK::Decompressor do
 end
 
 RSpec.describe Protocol::HPACK::Compressor do
-	root = File.expand_path('hpack-test-case/raw-data', __dir__)
+	root = File.expand_path('fixtures/raw-data', __dir__)
 	
 	let(:buffer) {String.new.b}
 	
