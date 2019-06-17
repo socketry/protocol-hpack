@@ -26,5 +26,8 @@ module Protocol
 		
 		class CompressionError < Error
 		end
+		
+		class DecompressionError < Error
+		end
 	end
 end
