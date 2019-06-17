@@ -149,9 +149,15 @@ module Protocol
 			# @return [Array] +[[name, value], ...]+
 			def decode(list = [])
 				while !end?
-					if pair = @context.decode(read_header)
+					command = read_header
+					
+					if pair = @context.decode(command)
 						list << pair
 					end
+				end
+				
+				if command and command[:type] == :change_table_size
+					raise CompressionError, "Trailing table size update!"
 				end
 				
 				return list
