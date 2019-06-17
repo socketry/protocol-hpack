@@ -30,8 +30,8 @@ RSpec.describe Protocol::HPACK::Context do
 
 	context 'processing' do
 		[
-			['no indexing', :noindex],
-			['never indexed', :neverindexed],
+			['no indexing', :no_index],
+			['never indexed', :never_indexed],
 		].each do |desc, type|
 			context "#{desc}" do
 				it 'should process indexed header with literal value' do
@@ -110,7 +110,7 @@ RSpec.describe Protocol::HPACK::Context do
 				add_to_table(['test2', '2' * 500])
 			end
 
-			context.decode(type: :changetablesize, value: 1500)
+			context.decode(type: :change_table_size, value: 1500)
 			expect(context.table.size).to be 1
 			expect(context.table.first[0]).to eq 'test2'
 		end

@@ -31,9 +31,9 @@ module Protocol
 		HEADER_REPRESENTATION = {
 			indexed: {prefix: 7, pattern: 0x80},
 			incremental: {prefix: 6, pattern: 0x40},
-			noindex: {prefix: 4, pattern: 0x00},
-			neverindexed: {prefix: 4, pattern: 0x10},
-			changetablesize: {prefix: 5, pattern: 0x20},
+			no_index: {prefix: 4, pattern: 0x00},
+			never_indexed: {prefix: 4, pattern: 0x10},
+			change_table_size: {prefix: 5, pattern: 0x20},
 		}
 		
 		# To decompress header blocks, a decoder only needs to maintain a
@@ -175,7 +175,7 @@ module Protocol
 				emit = nil
 
 				case command[:type]
-				when :changetablesize
+				when :change_table_size
 					self.table_size = command[:value]
 
 				when :indexed
@@ -189,7 +189,7 @@ module Protocol
 					k, v = dereference(idx)
 					emit = [k, v]
 
-				when :incremental, :noindex, :neverindexed
+				when :incremental, :no_index, :never_indexed
 					# A _literal representation_ that is _not added_ to the dynamic table
 					# entails the following action:
 					# o  The header field is added to the decoded header list.
@@ -229,12 +229,12 @@ module Protocol
 			def encode(headers)
 				commands = []
 				
-				# Literals commands are marked with :noindex when index is not used
-				noindex = [:static, :never].include?(@options[:index])
+				# Literals commands are marked with :no_index when index is not used
+				no_index = [:static, :never].include?(@options[:index])
 				
 				headers.each do |field, value|
 					command = add_command(field, value)
-					command[:type] = :noindex if noindex && command[:type] == :incremental
+					command[:type] = :no_index if no_index && command[:type] == :incremental
 					commands << command
 					
 					decode(command)

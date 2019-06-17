@@ -121,7 +121,7 @@ module Protocol
 				when :indexed
 					raise CompressionError if header[:name].zero?
 					header[:name] -= 1
-				when :changetablesize
+				when :change_table_size
 					header[:value] = header[:name]
 				else
 					if (header[:name]).zero?

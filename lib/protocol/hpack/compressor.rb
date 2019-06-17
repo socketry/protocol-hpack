@@ -158,7 +158,7 @@ module Protocol
 				case command[:type]
 				when :indexed
 					write_integer(command[:name] + 1, representation[:prefix])
-				when :changetablesize
+				when :change_table_size
 					write_integer(command[:value], representation[:prefix])
 				else
 					if command[:name].is_a? Integer

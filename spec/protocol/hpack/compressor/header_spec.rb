@@ -46,7 +46,7 @@ RSpec.describe Protocol::HPACK::Compressor do
 	
 	context 'literal w/o indexing representation' do
 		it 'should handle indexed header' do
-			headers = {name: 10, value: 'my-value', type: :noindex}
+			headers = {name: 10, value: 'my-value', type: :no_index}
 			compressor.write_header(headers)
 			expect(buffer.getbyte(0) & 0xf0).to eq 0x0
 			expect(buffer.getbyte(0) & 0x0f).to eq headers[:name] + 1
@@ -54,7 +54,7 @@ RSpec.describe Protocol::HPACK::Compressor do
 		end
 		
 		it 'should handle literal header' do
-			headers = {name: 'x-custom', value: 'my-value', type: :noindex}
+			headers = {name: 'x-custom', value: 'my-value', type: :no_index}
 			compressor.write_header(headers)
 			expect(buffer.getbyte(0) & 0xf0).to eq 0x0
 			expect(buffer.getbyte(0) & 0x0f).to eq 0
@@ -82,7 +82,7 @@ RSpec.describe Protocol::HPACK::Compressor do
 	
 	context 'literal never indexed' do
 		it 'should handle indexed header' do
-			headers = {name: 10, value: 'my-value', type: :neverindexed}
+			headers = {name: 10, value: 'my-value', type: :never_indexed}
 			compressor.write_header(headers)
 			expect(buffer.getbyte(0) & 0xf0).to eq 0x10
 			expect(buffer.getbyte(0) & 0x0f).to eq headers[:name] + 1
@@ -90,7 +90,7 @@ RSpec.describe Protocol::HPACK::Compressor do
 		end
 		
 		it 'should handle literal header' do
-			headers = {name: 'x-custom', value: 'my-value', type: :neverindexed}
+			headers = {name: 'x-custom', value: 'my-value', type: :never_indexed}
 			compressor.write_header(headers)
 			expect(buffer.getbyte(0) & 0xf0).to eq 0x10
 			expect(buffer.getbyte(0) & 0x0f).to eq 0
