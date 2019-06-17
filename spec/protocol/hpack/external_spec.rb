@@ -68,7 +68,7 @@ RSpec.describe Protocol::HPACK::Decompressor do
 			end
 		end
 	end
-end
+end if ENV['COVERAGE'].nil?
 
 RSpec.describe Protocol::HPACK::Compressor do
 	root = File.expand_path('fixtures/raw-data', __dir__)
@@ -102,4 +102,4 @@ RSpec.describe Protocol::HPACK::Compressor do
 			end
 		end
 	end
-end
+end if ENV['COVERAGE'].nil?
