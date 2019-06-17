@@ -72,7 +72,7 @@ module Protocol
 			# @return [Integer]
 			def read_integer(bits)
 				limit = 2**bits - 1
-				value = !bits.zero? ? (read_byte & limit) : 0
+				value = bits.zero? ? 0 : (read_byte & limit)
 				
 				shift = 0
 				
@@ -82,7 +82,7 @@ module Protocol
 					
 					break if (byte & 128).zero?
 				end if (value == limit)
-
+				
 				return value
 			end
 
@@ -94,6 +94,9 @@ module Protocol
 				huffman = (peek_byte & 0x80) == 0x80
 				
 				length = read_integer(7)
+				
+				raise CompressionError, "Invalid string length!" unless length
+				
 				string = read_bytes(length)
 				
 				raise CompressionError, "Invalid string length, got #{string.bytesize}, expecting #{length}!" unless string.bytesize == length
