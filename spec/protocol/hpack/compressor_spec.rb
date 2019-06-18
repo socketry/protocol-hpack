@@ -22,6 +22,8 @@
 require 'protocol/hpack/compressor'
 require 'protocol/hpack/decompressor'
 
+require 'json'
+
 RSpec.describe Protocol::HPACK::Compressor do
 	describe '#write_integer' do
 		let(:buffer) {String.new.b}
@@ -94,6 +96,60 @@ RSpec.describe Protocol::HPACK::Compressor do
 					subject.write_string(string)
 					expect(buffer.getbyte(0) & 0x80).to eq(choice == :plain ? 0 : 0x80)
 				end
+			end
+		end
+	end
+	
+	describe '#encode' do
+		let(:path) {File.expand_path("sequence1.json", __dir__)}
+		let(:sequence) {JSON.parse(File.read(path))}
+		
+		let(:encoder) {Protocol::HPACK::Context.new}
+		let(:decoder) {Protocol::HPACK::Context.new}
+		
+		it "can encode with small table size" do
+			sequence.each do |headers|
+				data = Protocol::HPACK::Compressor.new(String.new.b, encoder, table_size_limit: 512).encode(headers)
+				
+				expect(Protocol::HPACK::Decompressor.new(data, decoder).decode).to be == headers
+				
+				expect(encoder.table).to be == decoder.table
+			end
+			
+			expect(decoder.table_size).to be == 512
+		end
+		
+		it "can encode with default table size" do
+			sequence.each do |headers|
+				data = Protocol::HPACK::Compressor.new(String.new.b, encoder).encode(headers)
+				
+				expect(Protocol::HPACK::Decompressor.new(data, decoder).decode).to be == headers
+				
+				expect(encoder.table).to be == decoder.table
+			end
+		end
+		
+		it "can encode with large table size" do
+			sequence.each do |headers|
+				data = Protocol::HPACK::Compressor.new(String.new.b, encoder, table_size_limit: 65536).encode(headers)
+				
+				expect(Protocol::HPACK::Decompressor.new(data, decoder).decode).to be == headers
+				
+				expect(encoder.table).to be == decoder.table
+			end
+			
+			expect(decoder.table_size).to be == 65536
+		end
+		
+		it "can encode with random table sizes" do
+			sequence.each do |headers|
+				table_size = rand(128..65536)
+				
+				data = Protocol::HPACK::Compressor.new(String.new.b, encoder, table_size_limit: table_size).encode(headers)
+				
+				expect(Protocol::HPACK::Decompressor.new(data, decoder).decode).to be == headers
+				
+				expect(encoder.table).to be == decoder.table
 			end
 		end
 	end

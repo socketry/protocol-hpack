@@ -48,15 +48,19 @@ module Protocol
 		
 		# Responsible for encoding header key-value pairs using HPACK algorithm.
 		class Compressor
-			def initialize(buffer, context = Context.new)
+			def initialize(buffer, context = Context.new, table_size_limit: nil)
 				@buffer = buffer
 				@context = context
+				
+				@table_size_limit = table_size_limit
 			end
-
+			
+			attr :table_size_limit
+			
 			attr :buffer
 			attr :context
 			attr :offset
-
+			
 			def write_byte(byte)
 				@buffer << byte.chr
 			end
@@ -64,7 +68,7 @@ module Protocol
 			def write_bytes(bytes)
 				@buffer << bytes
 			end
-
+			
 			# Encodes provided value via integer representation.
 			# - http://tools.ietf.org/html/draft-ietf-httpbis-header-compression-10#section-5.1
 			#
@@ -179,7 +183,13 @@ module Protocol
 			#
 			# @param headers [Array] +[[name, value], ...]+
 			# @return [Buffer]
-			def encode(headers)
+			def encode(headers, table_size = @table_size_limit)
+				if table_size and table_size != @context.table_size
+					command = @context.change_table_size(table_size)
+					
+					write_header(command)
+				end
+				
 				commands = @context.encode(headers)
 				
 				commands.each do |command|

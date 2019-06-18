@@ -151,7 +151,9 @@ module Protocol
 				# NOTE: index is zero-based in this module.
 				value = STATIC_TABLE[index] || @table[index - STATIC_TABLE.size]
 				
-				raise CompressionError, "Index #{index} too large" unless value
+				if value.nil?
+					raise CompressionError, "Index #{index} too large!"
+				end
 				
 				return value
 			end
@@ -285,7 +287,14 @@ module Protocol
 				@table_size = size
 				size_check(nil)
 			end
-
+			
+			def change_table_size(size)
+				self.table_size = size
+				
+				# The command to resize the table:
+				return {type: :change_table_size, value: size}
+			end
+			
 			# Returns current table size in octets
 			# @return [Integer]
 			def current_table_size
