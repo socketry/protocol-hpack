@@ -47,23 +47,25 @@ module Protocol
 			# @param buf [Buffer]
 			# @return [String] binary string
 			# @raise [CompressionError] when Huffman coded string is malformed
-			def decode(buf)
-				emit = ''
+			def decode(buffer)
+				emit = String.new.b
 				state = 0 # start state
 
 				mask = (1 << BITS_AT_ONCE) - 1
-				buf.each_byte do |chr|
+				buffer.each_byte do |c|
 					(8 / BITS_AT_ONCE - 1).downto(0) do |shift|
-						branch = (chr >> (shift * BITS_AT_ONCE)) & mask
+						branch = (c >> (shift * BITS_AT_ONCE)) & mask
+						
 						# MACHINE[state] = [final, [transitions]]
 						#  [final] unfinished bits so far are prefix of the EOS code.
 						# Each transition is [emit, next]
 						#  [emit] character to be emitted on this transition, empty string, or EOS.
 						#  [next] next state number.
-						trans = MACHINE[state][branch]
-						raise CompressionError, 'Huffman decode error (EOS found)' if trans.first == EOS
-						emit << trans.first.chr if trans.first
-						state = trans.last
+						value, state = MACHINE[state][branch]
+						
+						raise CompressionError, 'Huffman decode error (EOS found)' if value == EOS
+						
+						emit << value.chr if value
 					end
 				end
 				# Check whether partial input is correctly filled
