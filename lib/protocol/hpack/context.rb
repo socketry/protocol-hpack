@@ -303,13 +303,15 @@ module Protocol
 
 			private
 
-			# Add a name-value pair to the dynamic table.
-			# Older entries might have been evicted so that
-			# the new entry fits in the dynamic table.
+			# Add a name-value pair to the dynamic table. Older entries might have been evicted so that the new entry fits in the dynamic table. The command and the component strings will be frozen.
 			#
 			# @param command [Array] +[name, value]+
 			def add_to_table(command)
 				return unless size_check(command)
+				
+				command.each(&:freeze)
+				command.freeze
+				
 				@table.unshift(command)
 			end
 
