@@ -4,6 +4,7 @@ require_relative "lib/protocol/hpack/version"
 Gem::Specification.new do |spec|
 	spec.name          = "protocol-hpack"
 	spec.version       = Protocol::HPACK::VERSION
+	spec.licenses      = ["MIT"]
 	spec.authors       = ["Samuel Williams"]
 	spec.email         = ["samuel.williams@oriontransfer.co.nz"]
 
