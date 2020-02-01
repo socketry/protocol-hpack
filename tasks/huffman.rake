@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 namespace :huffman do
 	desc 'Generate the huffman state table'
