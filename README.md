@@ -2,7 +2,7 @@
 
 Provides a compressor and decompressor for HTTP 2.0 headers, HPACK, as defined by [RFC7541](https://tools.ietf.org/html/rfc7541).
 
-[![Build Status](https://secure.travis-ci.com/socketry/protocol-hpack.svg)](http://travis-ci.com/socketry/protocol-hpack)
+[![Build Status](https://travis-ci.com/socketry/protocol-hpack.svg?branch=master)](https://travis-ci.com/socketry/protocol-hpack)
 [![Coverage Status](https://coveralls.io/repos/github/socketry/protocol-hpack/badge.svg?branch=master)](https://coveralls.io/github/socketry/protocol-hpack?branch=master)
 
 ## Installation
