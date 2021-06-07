@@ -194,8 +194,8 @@ module Protocol
 				
 				commands = @context.encode(headers)
 				
-				commands.each do |command|
-					write_header(command)
+				commands.each do |c|
+					write_header(c)
 				end
 				
 				return @buffer
