@@ -12,6 +12,11 @@ module Protocol
 	# - http://tools.ietf.org/html/draft-ietf-httpbis-header-compression-10
 	module HPACK
 		# Header representation as defined by the spec.
+		NO_INDEX_TYPE = {prefix: 4, pattern: 0x00}.freeze
+		NEVER_INDEXED_TYPE = {prefix: 4, pattern: 0x10}.freeze
+		CHANGE_TABLE_SIZE_TYPE = {prefix: 5, pattern: 0x20}.freeze
+		INCREMENTAL_TYPE = {prefix: 6, pattern: 0x40}.freeze
+		INDEXED_TYPE = {prefix: 7, pattern: 0x80}.freeze
 		HEADER_REPRESENTATION = {
 			indexed: {prefix: 7, pattern: 0x80},
 			incremental: {prefix: 6, pattern: 0x40},

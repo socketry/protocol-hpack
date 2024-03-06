@@ -98,12 +98,27 @@ module Protocol
 				pattern = peek_byte
 
 				header = {}
-				header[:type], type = HEADER_REPRESENTATION.find do |_t, desc|
-					mask = (pattern >> desc[:prefix]) << desc[:prefix]
-					mask == desc[:pattern]
-				end
 
-				raise CompressionError unless header[:type]
+				type = nil
+				mask_4 = (pattern >> 4) << 4
+				if mask_4 == 0x00
+					header[:type] = :no_index
+					type = NO_INDEX_TYPE
+				elsif mask_4 == 0x10
+					header[:type] = :never_indexed
+					type = NEVER_INDEXED_TYPE
+				elsif ((pattern >> 5) << 5) == 0x20
+					header[:type] = :change_table_size
+					type = CHANGE_TABLE_SIZE_TYPE
+				elsif ((pattern >> 6) << 6) == 0x40
+					header[:type] = :incremental
+					type = INCREMENTAL_TYPE
+				elsif ((pattern >> 7) << 7) == 0x80
+					header[:type] = :indexed
+					type = INDEXED_TYPE
+				else
+					raise CompressionError
+				end
 
 				header[:name] = read_integer(type[:prefix])
 
