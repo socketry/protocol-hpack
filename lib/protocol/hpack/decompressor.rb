@@ -120,23 +120,24 @@ module Protocol
 					raise CompressionError
 				end
 
-				header[:name] = read_integer(type[:prefix])
+				header_name = read_integer(type[:prefix])
 
 				case header[:type]
 				when :indexed
-					raise CompressionError if header[:name].zero?
-					header[:name] -= 1
+					raise CompressionError if header_name.zero?
+					header[:name] = header_name - 1
 				when :change_table_size
-					header[:value] = header[:name]
+					header[:name] = header_name
+					header[:value] = header_name
 					
 					if @table_size_limit and header[:value] > @table_size_limit
 						raise CompressionError, "Table size #{header[:value]} exceeds limit #{@table_size_limit}!"
 					end
 				else
-					if (header[:name]).zero?
+					if header_name.zero?
 						header[:name] = read_string
 					else
-						header[:name] -= 1
+						header[:name] = header_name - 1
 					end
 					
 					header[:value] = read_string
