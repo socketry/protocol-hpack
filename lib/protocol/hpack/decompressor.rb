@@ -12,6 +12,9 @@ module Protocol
 		# context of the opposing peer. Decompressor must be initialized with
 		# appropriate starting context based on local role: client or server.
 		class Decompressor
+			
+			MASK_SHIFT_4 = (~0x0 >> 4) << 4
+
 			def initialize(buffer, context = Context.new, table_size_limit: nil)
 				@buffer = buffer
 				@context = context
@@ -100,20 +103,30 @@ module Protocol
 				header = {}
 
 				type = nil
-				mask_4 = (pattern >> 4) << 4
-				if mask_4 == 0x00
+
+
+				case (pattern & MASK_SHIFT_4)
+				when 0x00
 					header[:type] = :no_index
 					type = NO_INDEX_TYPE
-				elsif mask_4 == 0x10
+				when 0x10
 					header[:type] = :never_indexed
 					type = NEVER_INDEXED_TYPE
-				elsif ((pattern >> 5) << 5) == 0x20
+				# checking if (pattern >> 5) << 5 == 0x20
+				# Since we cleared bottom 4 bits, the 5th
+				# bit can be either 0 or 1, so check both
+				# cases.
+				when 0x20, 0x20 | 0x10
 					header[:type] = :change_table_size
 					type = CHANGE_TABLE_SIZE_TYPE
-				elsif ((pattern >> 6) << 6) == 0x40
+				# checking if (pattern >> 6) << 6 == 0x40
+				# Same logic as above, but now over the 4
+				# possible combinations of 2 bits (5th, 6th)
+				when 0x40, 0x40 | 0x10, 0x40 | 0x20, 0x40 | (0x20 | 0x10)
 					header[:type] = :incremental
 					type = INCREMENTAL_TYPE
-				elsif ((pattern >> 7) << 7) == 0x80
+				# checking if (pattern >> 7) << 7 == 0x80
+				when 0x80, 0x80 | 0x10, 0x80 | 0x20, 0x80 | 0x40, 0x80 | (0x20 | 0x10), 0x80 | (0x40 | 0x10), 0x80 | (0x40 | 0x20), 0x80 | (0x40 | (0x20 | 0x10))
 					header[:type] = :indexed
 					type = INDEXED_TYPE
 				else
