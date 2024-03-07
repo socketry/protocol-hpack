@@ -301,6 +301,11 @@ module Protocol
 				command.freeze
 				
 				@table.unshift(command)
+				@cursize += entry_size(command)
+			end
+
+			def entry_size(e)
+				e[0].bytesize + e[1].bytesize + 32
 			end
 
 			# To keep the dynamic table size lower than or equal to @table_size,
@@ -309,14 +314,16 @@ module Protocol
 			# @param command [Hash]
 			# @return [Boolean] whether +command+ fits in the dynamic table.
 			def size_check(command)
-				cursize = current_table_size
+				
+				@cursize ||= current_table_size
+
 				cmdsize = command.nil? ? 0 : command[0].bytesize + command[1].bytesize + 32
 
-				while cursize + cmdsize > @table_size
+				while @cursize + cmdsize > @table_size
 					break if @table.empty?
 
 					e = @table.pop
-					cursize -= e[0].bytesize + e[1].bytesize + 32
+					@cursize -= e[0].bytesize + e[1].bytesize + 32
 				end
 
 				cmdsize <= @table_size
