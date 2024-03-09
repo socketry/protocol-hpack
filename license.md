@@ -1,8 +1,19 @@
 # MIT License
 
-Copyright, 2018-2020, by Samuel Williams.  
+Copyright, 2013-2016, by Ilya Grigorik.  
+Copyright, 2014-2015, by Kaoru Maeda.  
+Copyright, 2015, by Tamir Duberstein.  
+Copyright, 2016, by Kien Nguyen Trung.  
+Copyright, 2016, by George Ulmer.  
+Copyright, 2018, by Tiago Cardoso.  
+Copyright, 2018, by Byron Formwalt.  
+Copyright, 2018-2024, by Samuel Williams.  
+Copyright, 2018, by Kenichi Nakamura.  
+Copyright, 2019, by Jingyi Chen.  
 Copyright, 2019, by Cyril Roelandt.  
 Copyright, 2020, by Olle Jonsson.  
+Copyright, 2020, by Justin Mazzocchi.  
+Copyright, 2022, by Daniel Morrison.  
 Copyright, 2022, by Felix Yan.  
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

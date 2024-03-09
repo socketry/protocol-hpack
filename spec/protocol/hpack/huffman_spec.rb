@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 # Released under the MIT License.
-# Copyright, 2018-2020, by Samuel Williams.
+# Copyright, 2014, by Kaoru Maeda.
+# Copyright, 2015, by Tamir Duberstein.
+# Copyright, 2015, by Ilya Grigorik.
+# Copyright, 2018-2024, by Samuel Williams.
 
 require 'protocol/hpack/huffman'
 

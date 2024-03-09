@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 # Released under the MIT License.
-# Copyright, 2018-2019, by Samuel Williams.
+# Copyright, 2014-2015, by Kaoru Maeda.
+# Copyright, 2015, by Ilya Grigorik.
+# Copyright, 2015, by Tamir Duberstein.
+# Copyright, 2018-2024, by Samuel Williams.
+# Copyright, 2022, by Daniel Morrison.
 
 require_relative 'huffman/machine'
 require_relative 'error'

@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# Released under the MIT License.
+# Copyright, 2018-2024, by Samuel Williams.
+
 source "https://rubygems.org"
 
 # Specify your gem's dependencies in protocol-hpack.gemspec
@@ -15,5 +18,5 @@ end
 group :maintenance, optional: true do
 	gem "bake-gem"
 	
-	gem "bake-modernize"
+	gem "bake-modernize", path: "../../ioquatix/bake-modernize"
 end
