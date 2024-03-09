@@ -1,3 +1,6 @@
 protocol-http2:
   url: https://github.com/socketry/protocol-http2
   command: bundle exec bake test
+async-http:
+  url: https://github.com/socketry/async-http
+  command: bundle exec bake test
