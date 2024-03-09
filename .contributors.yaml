@@ -1,0 +1,1342 @@
+---
+# This file was generated using the following configuration:
+#
+# bake \
+# 	modernize:contributors:extract --root ../../tmp/http-2 --paths \
+# 		lib/http/2/huffman.rb \
+# 		lib/http/2/huffman_statemachine.rb \
+# 		lib/tasks/generate_huffman_table.rb \
+# 		lib/http/2/compressor.rb \
+# 		spec/compressor_spec.rb \
+# 		spec/huffman_spec.rb \
+# 		spec/hpack_test_spec.rb \
+# 	\; \
+# 	modernize:contributors:map lib/http/2/huffman.rb lib/protocol/hpack/huffman.rb \
+# 	modernize:contributors:map lib/http/2/huffman_statemachine.rb lib/protocol/hpack/machine.rb \
+# 	modernize:contributors:map lib/tasks/generate_huffman_table.rb tasks/huffman.rb \
+# 	modernize:contributors:map lib/http/2/compressor.rb lib/protocol/hpack/compressor.rb \
+# 	modernize:contributors:map spec/compressor_spec.rb spec/protocol/hpack/compressor_spec.rb \
+# 	modernize:contributors:map spec/huffman_spec.rb spec/protocol/hpack/huffman_spec.rb \
+# 	modernize:contributors:map spec/hpack_test_spec.rb spec/protocol/hpack/external_spec.rb \
+# 	output --format yaml > .contributors.yaml
+#
+- id: a770b5aa7f43da809b20e2112cc707d5d2c7bfde
+  time: &1 2013-08-05 06:12:06.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-04 11:12:06.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: a770b5aa7f43da809b20e2112cc707d5d2c7bfde
+  time: *1
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-04 11:12:06.000000000 -07:00
+  original_path: spec/compressor_spec.rb
+- id: 74cd2f7ca49255a8500c9223432db08a7682d828
+  time: &2 2013-08-05 08:15:50.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-04 13:15:50.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: 74cd2f7ca49255a8500c9223432db08a7682d828
+  time: *2
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-04 13:15:50.000000000 -07:00
+  original_path: spec/compressor_spec.rb
+- id: 342682f0ebfc7855ff5d09fd14fa08ddc88e3e77
+  time: &3 2013-08-05 09:42:12.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-04 14:42:12.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: 342682f0ebfc7855ff5d09fd14fa08ddc88e3e77
+  time: *3
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-04 14:42:12.000000000 -07:00
+  original_path: spec/compressor_spec.rb
+- id: 53e3ac3cb8fad6273cb9c16a1906e5e51b1fe04f
+  time: 2013-08-05 09:48:01.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-04 14:48:01.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: dc344fdf51cd5e0913a3caa82b487845ff8be309
+  time: &4 2013-08-05 11:25:07.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-04 16:25:07.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: dc344fdf51cd5e0913a3caa82b487845ff8be309
+  time: *4
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-04 16:25:07.000000000 -07:00
+  original_path: spec/compressor_spec.rb
+- id: 82a805eab2f187ad951f473db3551bf3ed1f13ee
+  time: &5 2013-08-05 14:54:59.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-04 19:54:59.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: 82a805eab2f187ad951f473db3551bf3ed1f13ee
+  time: *5
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-04 19:54:59.000000000 -07:00
+  original_path: spec/compressor_spec.rb
+- id: 794d5d8e4248aa2ed35c22964fadadef5782df16
+  time: &6 2013-08-06 05:54:33.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-05 10:54:33.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: 794d5d8e4248aa2ed35c22964fadadef5782df16
+  time: *6
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-05 10:54:33.000000000 -07:00
+  original_path: spec/compressor_spec.rb
+- id: 3b3eb5ffa9d1d69e03e1dae33eb4d100e27e2e3e
+  time: &7 2013-08-06 07:07:40.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-05 12:07:40.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: 3b3eb5ffa9d1d69e03e1dae33eb4d100e27e2e3e
+  time: *7
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-05 12:07:40.000000000 -07:00
+  original_path: spec/compressor_spec.rb
+- id: c6fb1221cfa6523ce146861cc820ca6df91126d6
+  time: &8 2013-08-09 21:11:18.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-07 11:54:08.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: c6fb1221cfa6523ce146861cc820ca6df91126d6
+  time: *8
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-07 11:54:08.000000000 -07:00
+  original_path: spec/compressor_spec.rb
+- id: 6ad5dbc2b9ff78de7f81881321445ab98b2b9742
+  time: &9 2013-08-09 21:15:31.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-09 12:15:31.000000000 +03:00
+  original_path: lib/http/2/compressor.rb
+- id: 6ad5dbc2b9ff78de7f81881321445ab98b2b9742
+  time: *9
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-09 12:15:31.000000000 +03:00
+  original_path: spec/compressor_spec.rb
+- id: 0adecb782257a87899967514cc2e10fb8bc44ae5
+  time: &10 2013-08-09 21:49:04.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-09 12:49:04.000000000 +03:00
+  original_path: lib/http/2/compressor.rb
+- id: 0adecb782257a87899967514cc2e10fb8bc44ae5
+  time: *10
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-09 12:49:04.000000000 +03:00
+  original_path: spec/compressor_spec.rb
+- id: fa23caeb9cd2e8ace64c5779c06f35667a051fa6
+  time: &11 2013-08-09 22:31:53.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-09 13:31:53.000000000 +03:00
+  original_path: lib/http/2/compressor.rb
+- id: fa23caeb9cd2e8ace64c5779c06f35667a051fa6
+  time: *11
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-09 13:31:53.000000000 +03:00
+  original_path: spec/compressor_spec.rb
+- id: 6c35fb1ed1ac062315ba4d7bdaa8c34cba3bd45c
+  time: 2013-08-09 22:39:46.000000000 +12:00
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-09 13:37:39.000000000 +03:00
+  original_path: spec/compressor_spec.rb
+- id: 2c5c26b27573905d86348a2cdb906451a009209e
+  time: 2013-08-09 22:52:39.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-09 13:52:39.000000000 +03:00
+  original_path: lib/http/2/compressor.rb
+- id: 90907e4b066cbff552f26d977525ecbc467221bb
+  time: 2013-08-09 22:52:59.000000000 +12:00
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-09 13:52:59.000000000 +03:00
+  original_path: spec/compressor_spec.rb
+- id: 71c7f951a0fd50c5f08822f74de945754f6b32aa
+  time: &12 2013-08-11 00:09:48.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-10 15:07:28.000000000 +03:00
+  original_path: lib/http/2/compressor.rb
+- id: 71c7f951a0fd50c5f08822f74de945754f6b32aa
+  time: *12
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-10 15:07:28.000000000 +03:00
+  original_path: spec/compressor_spec.rb
+- id: b7b3c6d36085bf5cd0aceeef4a3be84f57dee635
+  time: &13 2013-08-11 18:47:38.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-11 09:47:38.000000000 +03:00
+  original_path: lib/http/2/compressor.rb
+- id: b7b3c6d36085bf5cd0aceeef4a3be84f57dee635
+  time: *13
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-11 09:47:38.000000000 +03:00
+  original_path: spec/compressor_spec.rb
+- id: 9a30c488f33369343dc1d203ed8acb8f15510c6e
+  time: &14 2013-08-12 01:10:55.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-11 16:10:55.000000000 +03:00
+  original_path: lib/http/2/compressor.rb
+- id: 9a30c488f33369343dc1d203ed8acb8f15510c6e
+  time: *14
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-11 16:10:55.000000000 +03:00
+  original_path: spec/compressor_spec.rb
+- id: fd497ef03fd17f0137469f766e6b657084aeadd8
+  time: 2013-08-12 01:12:14.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-11 16:12:14.000000000 +03:00
+  original_path: lib/http/2/compressor.rb
+- id: e13865455833725e526497f6b149d0f9ef84bc8d
+  time: &15 2013-08-12 01:26:36.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-11 16:26:36.000000000 +03:00
+  original_path: lib/http/2/compressor.rb
+- id: e13865455833725e526497f6b149d0f9ef84bc8d
+  time: *15
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-11 16:26:36.000000000 +03:00
+  original_path: spec/compressor_spec.rb
+- id: 26f5e147ac6bf88edd0081f2dccabc3b1a593b2e
+  time: &16 2013-08-16 19:31:36.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-16 10:31:36.000000000 +03:00
+  original_path: lib/http/2/compressor.rb
+- id: 26f5e147ac6bf88edd0081f2dccabc3b1a593b2e
+  time: *16
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-16 10:31:36.000000000 +03:00
+  original_path: spec/compressor_spec.rb
+- id: a0b5ed2ff4fa2fb7b49636c8abcbe2995f845ccf
+  time: &17 2013-08-22 17:53:13.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-21 22:53:13.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: a0b5ed2ff4fa2fb7b49636c8abcbe2995f845ccf
+  time: *17
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-08-21 22:53:13.000000000 -07:00
+  original_path: spec/compressor_spec.rb
+- id: b60d9ebd92819dbda512b92831c4f3f085f4d807
+  time: 2013-09-16 06:53:50.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-09-15 11:53:50.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: ec7a1c1b445202cbb6282fc109711dcd615af594
+  time: &18 2013-09-16 07:22:20.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-09-15 12:22:20.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: ec7a1c1b445202cbb6282fc109711dcd615af594
+  time: *18
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-09-15 12:22:20.000000000 -07:00
+  original_path: spec/compressor_spec.rb
+- id: 4320b917782754cd5d3e9d19427ebe7735f505ee
+  time: 2013-09-16 11:56:55.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-09-15 16:56:55.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: dead2480320016e93fd78dabc3c0ce13a9fcc20f
+  time: &19 2013-09-21 12:07:23.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-09-20 20:02:25.000000000 -04:00
+  original_path: lib/http/2/compressor.rb
+- id: dead2480320016e93fd78dabc3c0ce13a9fcc20f
+  time: *19
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-09-20 20:02:25.000000000 -04:00
+  original_path: spec/compressor_spec.rb
+- id: d6cc3c870c7fd1ce30ce18077ace57d7b80c8db8
+  time: &20 2013-09-21 15:12:38.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-09-20 23:12:38.000000000 -04:00
+  original_path: lib/http/2/compressor.rb
+- id: d6cc3c870c7fd1ce30ce18077ace57d7b80c8db8
+  time: *20
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-09-20 23:12:38.000000000 -04:00
+  original_path: spec/compressor_spec.rb
+- id: baf36371943320e9d34307b6bff1d735bd26c19f
+  time: 2013-09-24 05:27:28.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-09-23 10:27:28.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: 103322a7a65248b48f0b86b99152572516b657dc
+  time: 2013-09-25 17:50:19.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-09-24 22:50:19.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: e7816a8347a571b283487acd3c6880b729561013
+  time: 2013-09-26 04:22:12.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-09-25 09:22:12.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: f1861baadce59365ed4ab04993f1e211b88fd9ed
+  time: &21 2013-09-28 06:17:04.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-09-25 22:01:08.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: 27d9072028c85dcb8a607f4482e74199eaf8c936
+  time: &22 2013-09-28 06:17:04.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-09-25 22:13:58.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: 993cb2038c3813d3962f9dfac25b9b3761bea004
+  time: 2013-09-28 06:17:04.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-09-25 22:56:44.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: 8f1e3822c07d09f59c1394fbe2b37c41d6e9c1c6
+  time: &23 2013-09-28 06:17:04.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-09-25 23:23:53.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: 4097ac14e311cfd9e63c428efbd3ca2fde5d42ce
+  time: &24 2013-09-28 06:17:04.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-09-27 11:06:18.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: f1861baadce59365ed4ab04993f1e211b88fd9ed
+  time: *21
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-09-25 22:01:08.000000000 -07:00
+  original_path: spec/compressor_spec.rb
+- id: 27d9072028c85dcb8a607f4482e74199eaf8c936
+  time: *22
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-09-25 22:13:58.000000000 -07:00
+  original_path: spec/compressor_spec.rb
+- id: 8f1e3822c07d09f59c1394fbe2b37c41d6e9c1c6
+  time: *23
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-09-25 23:23:53.000000000 -07:00
+  original_path: spec/compressor_spec.rb
+- id: 4097ac14e311cfd9e63c428efbd3ca2fde5d42ce
+  time: *24
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-09-27 11:06:18.000000000 -07:00
+  original_path: spec/compressor_spec.rb
+- id: 9e67f6090b66b5cdb72cec1605cf55f804830078
+  time: &25 2013-10-10 06:45:58.000000000 +13:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-10-09 10:45:46.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: 9e67f6090b66b5cdb72cec1605cf55f804830078
+  time: *25
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2013-10-09 10:45:46.000000000 -07:00
+  original_path: spec/compressor_spec.rb
+- id: d7b739eef94d4af30ec01841e34581e208c40c36
+  time: &26 2014-10-08 15:08:39.000000000 +13:00
+  path: lib/protocol/hpack/huffman.rb
+  author:
+    name: Kaoru Maeda
+    email: maeda@lepidum.co.jp
+    time: 2014-09-22 17:42:22.000000000 +09:00
+  original_path: lib/http/2/huffman.rb
+- id: d7b739eef94d4af30ec01841e34581e208c40c36
+  time: *26
+  path: lib/protocol/hpack/machine.rb
+  author:
+    name: Kaoru Maeda
+    email: maeda@lepidum.co.jp
+    time: 2014-09-22 17:42:22.000000000 +09:00
+  original_path: lib/http/2/huffman_statemachine.rb
+- id: d7b739eef94d4af30ec01841e34581e208c40c36
+  time: *26
+  path: tasks/huffman.rb
+  author:
+    name: Kaoru Maeda
+    email: maeda@lepidum.co.jp
+    time: 2014-09-22 17:42:22.000000000 +09:00
+  original_path: lib/tasks/generate_huffman_table.rb
+- id: d7b739eef94d4af30ec01841e34581e208c40c36
+  time: *26
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Kaoru Maeda
+    email: maeda@lepidum.co.jp
+    time: 2014-09-22 17:42:22.000000000 +09:00
+  original_path: lib/http/2/compressor.rb
+- id: f3329279f8819e7d8bcc500c98495c3de3e8c592
+  time: 2014-10-08 15:08:39.000000000 +13:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Kaoru Maeda
+    email: maeda@lepidum.co.jp
+    time: 2014-09-26 18:50:36.000000000 +09:00
+  original_path: lib/http/2/compressor.rb
+- id: b48673edc75132af45f57928f61289dcf4acd150
+  time: &27 2014-10-08 15:08:39.000000000 +13:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Kaoru Maeda
+    email: maeda@lepidum.co.jp
+    time: 2014-09-26 18:51:45.000000000 +09:00
+  original_path: lib/http/2/compressor.rb
+- id: f105f1f3a9d40d4565e0c4cb85b3f5e569db6351
+  time: 2014-10-08 15:08:39.000000000 +13:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Kaoru Maeda
+    email: maeda@lepidum.co.jp
+    time: 2014-09-26 18:59:03.000000000 +09:00
+  original_path: lib/http/2/compressor.rb
+- id: 4322322dbb9fefd824beda958e6c237b302a3ba9
+  time: 2014-10-08 15:08:39.000000000 +13:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Kaoru Maeda
+    email: maeda@lepidum.co.jp
+    time: 2014-09-26 19:10:54.000000000 +09:00
+  original_path: lib/http/2/compressor.rb
+- id: 6f79ea4f11a4e0581f4c73a2fe729cdab79d1f98
+  time: 2014-10-08 15:08:39.000000000 +13:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Kaoru Maeda
+    email: maeda@lepidum.co.jp
+    time: 2014-09-26 19:23:51.000000000 +09:00
+  original_path: lib/http/2/compressor.rb
+- id: 20d0de1c2efadca42c2e0a7bc5f8c235d9ba754c
+  time: 2014-10-08 15:08:39.000000000 +13:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Kaoru Maeda
+    email: maeda@lepidum.co.jp
+    time: 2014-09-29 17:37:47.000000000 +09:00
+  original_path: lib/http/2/compressor.rb
+- id: d7b739eef94d4af30ec01841e34581e208c40c36
+  time: *26
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Kaoru Maeda
+    email: maeda@lepidum.co.jp
+    time: 2014-09-22 17:42:22.000000000 +09:00
+  original_path: spec/compressor_spec.rb
+- id: b48673edc75132af45f57928f61289dcf4acd150
+  time: *27
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Kaoru Maeda
+    email: maeda@lepidum.co.jp
+    time: 2014-09-26 18:51:45.000000000 +09:00
+  original_path: spec/compressor_spec.rb
+- id: d7b739eef94d4af30ec01841e34581e208c40c36
+  time: *26
+  path: spec/protocol/hpack/huffman_spec.rb
+  author:
+    name: Kaoru Maeda
+    email: maeda@lepidum.co.jp
+    time: 2014-09-22 17:42:22.000000000 +09:00
+  original_path: spec/huffman_spec.rb
+- id: d7b739eef94d4af30ec01841e34581e208c40c36
+  time: *26
+  path: spec/protocol/hpack/external_spec.rb
+  author:
+    name: Kaoru Maeda
+    email: maeda@lepidum.co.jp
+    time: 2014-09-22 17:42:22.000000000 +09:00
+  original_path: spec/hpack_test_spec.rb
+- id: 5e639c178c47841bf6b99727840e31c36177ac91
+  time: &28 2014-10-22 21:26:41.000000000 +13:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Kaoru Maeda
+    email: maeda@lepidum.co.jp
+    time: 2014-10-22 15:18:50.000000000 +09:00
+  original_path: lib/http/2/compressor.rb
+- id: 5e639c178c47841bf6b99727840e31c36177ac91
+  time: *28
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Kaoru Maeda
+    email: maeda@lepidum.co.jp
+    time: 2014-10-22 15:18:50.000000000 +09:00
+  original_path: spec/compressor_spec.rb
+- id: 5e639c178c47841bf6b99727840e31c36177ac91
+  time: *28
+  path: spec/protocol/hpack/external_spec.rb
+  author:
+    name: Kaoru Maeda
+    email: maeda@lepidum.co.jp
+    time: 2014-10-22 15:18:50.000000000 +09:00
+  original_path: spec/hpack_test_spec.rb
+- id: da622d24ffe3abb46c9fb81bac6818d3ef902191
+  time: &29 2014-10-23 03:43:01.000000000 +13:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2014-10-22 07:43:01.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: da622d24ffe3abb46c9fb81bac6818d3ef902191
+  time: *29
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2014-10-22 07:43:01.000000000 -07:00
+  original_path: spec/compressor_spec.rb
+- id: da622d24ffe3abb46c9fb81bac6818d3ef902191
+  time: *29
+  path: spec/protocol/hpack/external_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2014-10-22 07:43:01.000000000 -07:00
+  original_path: spec/hpack_test_spec.rb
+- id: 232e51826d53ca390e6c51f8b557996f9fd8a1ec
+  time: &30 2015-01-26 19:24:42.000000000 +13:00
+  path: lib/protocol/hpack/huffman.rb
+  author:
+    name: Kaoru Maeda
+    email: maeda@lepidum.co.jp
+    time: 2015-01-26 15:24:42.000000000 +09:00
+  original_path: lib/http/2/huffman.rb
+- id: 232e51826d53ca390e6c51f8b557996f9fd8a1ec
+  time: *30
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Kaoru Maeda
+    email: maeda@lepidum.co.jp
+    time: 2015-01-26 15:24:42.000000000 +09:00
+  original_path: lib/http/2/compressor.rb
+- id: f443c386b1fd7b29a054e6a0d79457ac5278e152
+  time: &31 2015-02-04 04:46:10.000000000 +13:00
+  path: lib/protocol/hpack/huffman.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2015-02-03 07:46:10.000000000 -08:00
+  original_path: lib/http/2/huffman.rb
+- id: f443c386b1fd7b29a054e6a0d79457ac5278e152
+  time: *31
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2015-02-03 07:46:10.000000000 -08:00
+  original_path: lib/http/2/compressor.rb
+- id: f99b716067b27071fe92f0b632c0fd783d4d122c
+  time: &32 2015-03-10 07:43:43.000000000 +13:00
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@squareup.com
+    time: 2014-10-03 21:24:24.000000000 -07:00
+  original_path: spec/compressor_spec.rb
+- id: f99b716067b27071fe92f0b632c0fd783d4d122c
+  time: *32
+  path: spec/protocol/hpack/huffman_spec.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@squareup.com
+    time: 2014-10-03 21:24:24.000000000 -07:00
+  original_path: spec/huffman_spec.rb
+- id: f99b716067b27071fe92f0b632c0fd783d4d122c
+  time: *32
+  path: spec/protocol/hpack/external_spec.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@squareup.com
+    time: 2014-10-03 21:24:24.000000000 -07:00
+  original_path: spec/hpack_test_spec.rb
+- id: 4411352447a559ff7bafadba04a2bfd28d826b6b
+  time: &33 2015-04-07 04:57:52.000000000 +12:00
+  path: lib/protocol/hpack/huffman.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-09 09:40:25.000000000 -07:00
+  original_path: lib/http/2/huffman.rb
+- id: 4411352447a559ff7bafadba04a2bfd28d826b6b
+  time: *33
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-09 09:40:25.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: 38246e3b94f1f7885ad1454f5ce24ea6d20ddba3
+  time: &34 2015-04-07 04:57:53.000000000 +12:00
+  path: lib/protocol/hpack/huffman.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@squareup.com
+    time: 2014-10-03 22:09:48.000000000 -07:00
+  original_path: lib/http/2/huffman.rb
+- id: 38246e3b94f1f7885ad1454f5ce24ea6d20ddba3
+  time: *34
+  path: tasks/huffman.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@squareup.com
+    time: 2014-10-03 22:09:48.000000000 -07:00
+  original_path: lib/tasks/generate_huffman_table.rb
+- id: 38246e3b94f1f7885ad1454f5ce24ea6d20ddba3
+  time: *34
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@squareup.com
+    time: 2014-10-03 22:09:48.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: 38246e3b94f1f7885ad1454f5ce24ea6d20ddba3
+  time: *34
+  path: spec/protocol/hpack/huffman_spec.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@squareup.com
+    time: 2014-10-03 22:09:48.000000000 -07:00
+  original_path: spec/huffman_spec.rb
+- id: 38246e3b94f1f7885ad1454f5ce24ea6d20ddba3
+  time: *34
+  path: spec/protocol/hpack/external_spec.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@squareup.com
+    time: 2014-10-03 22:09:48.000000000 -07:00
+  original_path: spec/hpack_test_spec.rb
+- id: f061f985ecc3992692e9ecd0043b85764f1d2750
+  time: &35 2015-04-07 05:00:10.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-09 09:56:02.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: f061f985ecc3992692e9ecd0043b85764f1d2750
+  time: *35
+  path: spec/protocol/hpack/huffman_spec.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-09 09:56:02.000000000 -07:00
+  original_path: spec/huffman_spec.rb
+- id: f061f985ecc3992692e9ecd0043b85764f1d2750
+  time: *35
+  path: spec/protocol/hpack/external_spec.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-09 09:56:02.000000000 -07:00
+  original_path: spec/hpack_test_spec.rb
+- id: 9d4fa4ba5db7ba3c2056de30196c7e9ff9be6292
+  time: &36 2015-04-07 05:01:18.000000000 +12:00
+  path: lib/protocol/hpack/huffman.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-09 08:58:31.000000000 -07:00
+  original_path: lib/http/2/huffman.rb
+- id: 9d4fa4ba5db7ba3c2056de30196c7e9ff9be6292
+  time: *36
+  path: tasks/huffman.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-09 08:58:31.000000000 -07:00
+  original_path: lib/tasks/generate_huffman_table.rb
+- id: 9d4fa4ba5db7ba3c2056de30196c7e9ff9be6292
+  time: *36
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-09 08:58:31.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: 9d4fa4ba5db7ba3c2056de30196c7e9ff9be6292
+  time: *36
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-09 08:58:31.000000000 -07:00
+  original_path: spec/compressor_spec.rb
+- id: 75da4126da4cdae5acc93d4a63c43c16bb221830
+  time: &37 2015-04-07 05:02:35.000000000 +12:00
+  path: lib/protocol/hpack/huffman.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-04-05 11:30:55.000000000 -07:00
+  original_path: lib/http/2/huffman.rb
+- id: 75da4126da4cdae5acc93d4a63c43c16bb221830
+  time: *37
+  path: lib/protocol/hpack/machine.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-04-05 11:30:55.000000000 -07:00
+  original_path: lib/http/2/huffman_statemachine.rb
+- id: 75da4126da4cdae5acc93d4a63c43c16bb221830
+  time: *37
+  path: tasks/huffman.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-04-05 11:30:55.000000000 -07:00
+  original_path: lib/tasks/generate_huffman_table.rb
+- id: 75da4126da4cdae5acc93d4a63c43c16bb221830
+  time: *37
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-04-05 11:30:55.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: 75da4126da4cdae5acc93d4a63c43c16bb221830
+  time: *37
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-04-05 11:30:55.000000000 -07:00
+  original_path: spec/compressor_spec.rb
+- id: 75da4126da4cdae5acc93d4a63c43c16bb221830
+  time: *37
+  path: spec/protocol/hpack/huffman_spec.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-04-05 11:30:55.000000000 -07:00
+  original_path: spec/huffman_spec.rb
+- id: 62b9ae5b7a7f37d4b23006bafd25733fd3bfd90d
+  time: 2015-04-07 05:02:36.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-09 09:47:04.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: 36ccce1da2555fc69f910c89b3f2b13b310610ed
+  time: 2015-04-07 05:02:36.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-09 10:20:07.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: 9c9f7a8fa261bed360befc7e37a21a142db3b51e
+  time: 2015-04-07 05:02:36.000000000 +12:00
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-09 09:50:14.000000000 -07:00
+  original_path: spec/compressor_spec.rb
+- id: 5d1be5b49e4ae78c5ebce6b2d8024218bf99edbb
+  time: &38 2015-04-07 05:03:21.000000000 +12:00
+  path: lib/protocol/hpack/huffman.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-09 11:29:36.000000000 -07:00
+  original_path: lib/http/2/huffman.rb
+- id: 4d6b33913582202053e9048237b14a03809e6a0d
+  time: 2015-04-07 05:03:21.000000000 +12:00
+  path: tasks/huffman.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-09 11:05:52.000000000 -07:00
+  original_path: lib/tasks/generate_huffman_table.rb
+- id: 5d1be5b49e4ae78c5ebce6b2d8024218bf99edbb
+  time: *38
+  path: tasks/huffman.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-09 11:29:36.000000000 -07:00
+  original_path: lib/tasks/generate_huffman_table.rb
+- id: 00cafeafbe8a15df642f7e864f87ade6607613f9
+  time: 2015-04-07 05:03:21.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-09 10:52:43.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: c899aa54d62b1f151fbc1ed6ee3882160d526f64
+  time: 2015-04-07 05:03:21.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-09 11:02:00.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: 236b584c3e47576d4f167be11e0f8f7966bc3b74
+  time: 2015-04-07 05:03:21.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-04-05 11:20:35.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: ba437d4eea80ff30fac071d7d59348e64375a1c0
+  time: &39 2015-04-07 05:29:15.000000000 +12:00
+  path: lib/protocol/hpack/huffman.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-09 11:37:45.000000000 -07:00
+  original_path: lib/http/2/huffman.rb
+- id: ba437d4eea80ff30fac071d7d59348e64375a1c0
+  time: *39
+  path: tasks/huffman.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-09 11:37:45.000000000 -07:00
+  original_path: lib/tasks/generate_huffman_table.rb
+- id: ba437d4eea80ff30fac071d7d59348e64375a1c0
+  time: *39
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-09 11:37:45.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: ba437d4eea80ff30fac071d7d59348e64375a1c0
+  time: *39
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-09 11:37:45.000000000 -07:00
+  original_path: spec/compressor_spec.rb
+- id: ba437d4eea80ff30fac071d7d59348e64375a1c0
+  time: *39
+  path: spec/protocol/hpack/external_spec.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-09 11:37:45.000000000 -07:00
+  original_path: spec/hpack_test_spec.rb
+- id: d5c52f091145ecd996bdc99a90de1659f2a72cfc
+  time: &40 2015-04-07 05:29:17.000000000 +12:00
+  path: lib/protocol/hpack/huffman.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-09 11:41:47.000000000 -07:00
+  original_path: lib/http/2/huffman.rb
+- id: 31b7b20328ef2dd28427d76af1865a409eea2e88
+  time: &41 2015-04-07 05:29:17.000000000 +12:00
+  path: lib/protocol/hpack/huffman.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-17 08:46:25.000000000 -07:00
+  original_path: lib/http/2/huffman.rb
+- id: a9bfd7da578fd32d8761af7f7aa6334153a0d58b
+  time: &42 2015-04-07 05:29:17.000000000 +12:00
+  path: lib/protocol/hpack/huffman.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-31 22:38:35.000000000 -07:00
+  original_path: lib/http/2/huffman.rb
+- id: d5c52f091145ecd996bdc99a90de1659f2a72cfc
+  time: *40
+  path: lib/protocol/hpack/machine.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-09 11:41:47.000000000 -07:00
+  original_path: lib/http/2/huffman_statemachine.rb
+- id: 31b7b20328ef2dd28427d76af1865a409eea2e88
+  time: *41
+  path: lib/protocol/hpack/machine.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-17 08:46:25.000000000 -07:00
+  original_path: lib/http/2/huffman_statemachine.rb
+- id: d5c52f091145ecd996bdc99a90de1659f2a72cfc
+  time: *40
+  path: tasks/huffman.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-09 11:41:47.000000000 -07:00
+  original_path: lib/tasks/generate_huffman_table.rb
+- id: 31b7b20328ef2dd28427d76af1865a409eea2e88
+  time: *41
+  path: tasks/huffman.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-17 08:46:25.000000000 -07:00
+  original_path: lib/tasks/generate_huffman_table.rb
+- id: a9bfd7da578fd32d8761af7f7aa6334153a0d58b
+  time: *42
+  path: tasks/huffman.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-31 22:38:35.000000000 -07:00
+  original_path: lib/tasks/generate_huffman_table.rb
+- id: 5888ff9e92da6b7e1fcb0a55f36493637259a3d9
+  time: &43 2015-04-07 05:29:17.000000000 +12:00
+  path: tasks/huffman.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-31 23:39:10.000000000 -07:00
+  original_path: lib/tasks/generate_huffman_table.rb
+- id: d5c52f091145ecd996bdc99a90de1659f2a72cfc
+  time: *40
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-09 11:41:47.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: 31b7b20328ef2dd28427d76af1865a409eea2e88
+  time: *41
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-17 08:46:25.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: a9bfd7da578fd32d8761af7f7aa6334153a0d58b
+  time: *42
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-31 22:38:35.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: d5c52f091145ecd996bdc99a90de1659f2a72cfc
+  time: *40
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-09 11:41:47.000000000 -07:00
+  original_path: spec/compressor_spec.rb
+- id: 5888ff9e92da6b7e1fcb0a55f36493637259a3d9
+  time: *43
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-31 23:39:10.000000000 -07:00
+  original_path: spec/compressor_spec.rb
+- id: d5c52f091145ecd996bdc99a90de1659f2a72cfc
+  time: *40
+  path: spec/protocol/hpack/huffman_spec.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-09 11:41:47.000000000 -07:00
+  original_path: spec/huffman_spec.rb
+- id: d5c52f091145ecd996bdc99a90de1659f2a72cfc
+  time: *40
+  path: spec/protocol/hpack/external_spec.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-03-09 11:41:47.000000000 -07:00
+  original_path: spec/hpack_test_spec.rb
+- id: 3e321a4649ea1f5969ff47dc9ba3ba3ad2d3d057
+  time: &44 2015-04-07 05:36:15.000000000 +12:00
+  path: lib/protocol/hpack/huffman.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-04-05 09:27:22.000000000 -07:00
+  original_path: lib/http/2/huffman.rb
+- id: 3e321a4649ea1f5969ff47dc9ba3ba3ad2d3d057
+  time: *44
+  path: lib/protocol/hpack/machine.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-04-05 09:27:22.000000000 -07:00
+  original_path: lib/http/2/huffman_statemachine.rb
+- id: 3e321a4649ea1f5969ff47dc9ba3ba3ad2d3d057
+  time: *44
+  path: tasks/huffman.rb
+  author:
+    name: Tamir Duberstein
+    email: tamird@gmail.com
+    time: 2015-04-05 09:27:22.000000000 -07:00
+  original_path: lib/tasks/generate_huffman_table.rb
+- id: 46986316b71af8910cc8d5d3da0621edb0db2ff2
+  time: &45 2015-04-08 15:11:51.000000000 +12:00
+  path: lib/protocol/hpack/huffman.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2015-04-07 20:11:51.000000000 -07:00
+  original_path: lib/http/2/huffman.rb
+- id: 46986316b71af8910cc8d5d3da0621edb0db2ff2
+  time: *45
+  path: lib/protocol/hpack/machine.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2015-04-07 20:11:51.000000000 -07:00
+  original_path: lib/http/2/huffman_statemachine.rb
+- id: 46986316b71af8910cc8d5d3da0621edb0db2ff2
+  time: *45
+  path: tasks/huffman.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2015-04-07 20:11:51.000000000 -07:00
+  original_path: lib/tasks/generate_huffman_table.rb
+- id: 46986316b71af8910cc8d5d3da0621edb0db2ff2
+  time: *45
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2015-04-07 20:11:51.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: 46986316b71af8910cc8d5d3da0621edb0db2ff2
+  time: *45
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2015-04-07 20:11:51.000000000 -07:00
+  original_path: spec/compressor_spec.rb
+- id: 46986316b71af8910cc8d5d3da0621edb0db2ff2
+  time: *45
+  path: spec/protocol/hpack/huffman_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2015-04-07 20:11:51.000000000 -07:00
+  original_path: spec/huffman_spec.rb
+- id: 46986316b71af8910cc8d5d3da0621edb0db2ff2
+  time: *45
+  path: spec/protocol/hpack/external_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2015-04-07 20:11:51.000000000 -07:00
+  original_path: spec/hpack_test_spec.rb
+- id: 6087ef4f5a71e13537301a027e22e00036168c05
+  time: 2015-12-28 10:30:29.000000000 +13:00
+  path: spec/protocol/hpack/external_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2015-12-27 13:29:27.000000000 -08:00
+  original_path: spec/hpack_test_spec.rb
+- id: 90203574be3e22e32f0edfbdc296e092add24261
+  time: 2015-12-28 13:51:55.000000000 +13:00
+  path: spec/protocol/hpack/external_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2015-12-27 16:51:55.000000000 -08:00
+  original_path: spec/hpack_test_spec.rb
+- id: 4d01d584584404154831c503875970e4c293880a
+  time: 2016-02-27 16:39:27.000000000 +13:00
+  path: spec/protocol/hpack/external_spec.rb
+  author:
+    name: Kien Nguyen Trung
+    email: trungkien2288@gmail.com
+    time: 2016-02-27 10:39:27.000000000 +07:00
+  original_path: spec/hpack_test_spec.rb
+- id: 3bf07b9e4643b50aee5f6ace5c4ca9cf31723bab
+  time: 2016-02-28 13:48:16.000000000 +13:00
+  path: spec/protocol/hpack/external_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2016-02-27 16:48:16.000000000 -08:00
+  original_path: spec/hpack_test_spec.rb
+- id: 19102297bb11b7ce166a49119dae82732182af6a
+  time: 2016-06-10 03:24:37.000000000 +12:00
+  path: spec/protocol/hpack/external_spec.rb
+  author:
+    name: Ilya Grigorik
+    email: ilya@igvita.com
+    time: 2016-06-09 11:24:37.000000000 -04:00
+  original_path: spec/hpack_test_spec.rb
+- id: f7dc3d656c51b6ea730501e1b3c64d2bb59e75a2
+  time: &46 2016-10-13 04:23:53.000000000 +13:00
+  path: tasks/huffman.rb
+  author:
+    name: George Ulmer
+    email: george@boost-media.com
+    time: 2016-10-12 08:23:53.000000000 -07:00
+  original_path: lib/tasks/generate_huffman_table.rb
+- id: f7dc3d656c51b6ea730501e1b3c64d2bb59e75a2
+  time: *46
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: George Ulmer
+    email: george@boost-media.com
+    time: 2016-10-12 08:23:53.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: '08d1a3dcade1ae39f4598e0d4e1622fde13bb014'
+  time: 2018-01-10 18:41:27.000000000 +13:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Tiago Cardoso
+    email: cardoso_tiago@hotmail.com
+    time: 2018-01-10 05:41:27.000000000 +00:00
+  original_path: lib/http/2/compressor.rb
+- id: 4047315ccab1d450a2fc202362cdac87b21d8b07
+  time: 2018-01-11 18:51:19.000000000 +13:00
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Tiago Cardoso
+    email: cardoso_tiago@hotmail.com
+    time: 2018-01-11 05:51:19.000000000 +00:00
+  original_path: spec/compressor_spec.rb
+- id: 1cb2518fa338c56c2c1feecddbba3ca933f66718
+  time: &47 2018-07-24 07:42:28.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Byron Formwalt
+    email: byronformwalt@users.noreply.github.com
+    time: 2018-07-23 12:42:28.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: 1cb2518fa338c56c2c1feecddbba3ca933f66718
+  time: *47
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Byron Formwalt
+    email: byronformwalt@users.noreply.github.com
+    time: 2018-07-23 12:42:28.000000000 -07:00
+  original_path: spec/compressor_spec.rb
+- id: 9b4a4cee5a0736d57b245bab63b7d23d8ee4fb31
+  time: &48 2018-08-16 07:55:21.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Kenichi Nakamura
+    email: kenichi.nakamura@gmail.com
+    time: 2018-08-15 12:55:21.000000000 -07:00
+  original_path: lib/http/2/compressor.rb
+- id: 9b4a4cee5a0736d57b245bab63b7d23d8ee4fb31
+  time: *48
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Kenichi Nakamura
+    email: kenichi.nakamura@gmail.com
+    time: 2018-08-15 12:55:21.000000000 -07:00
+  original_path: spec/compressor_spec.rb
+- id: '0549edf8987da8d2b9948597a1e6b2d9c090d7aa'
+  time: &49 2019-03-05 19:05:20.000000000 +13:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Jingyi Chen
+    email: chejingy@amazon.com
+    time: 2019-03-04 22:05:20.000000000 -08:00
+  original_path: lib/http/2/compressor.rb
+- id: '0549edf8987da8d2b9948597a1e6b2d9c090d7aa'
+  time: *49
+  path: spec/protocol/hpack/compressor_spec.rb
+  author:
+    name: Jingyi Chen
+    email: chejingy@amazon.com
+    time: 2019-03-04 22:05:20.000000000 -08:00
+  original_path: spec/compressor_spec.rb
+- id: a9cde3c871572459ee8ce158076f6d63d53f1306
+  time: 2020-08-15 03:17:47.000000000 +12:00
+  path: lib/protocol/hpack/compressor.rb
+  author:
+    name: Justin Mazzocchi
+    email: 2831158+jzzocc@users.noreply.github.com
+    time: 2020-08-14 11:17:47.000000000 -04:00
+  original_path: lib/http/2/compressor.rb
+- id: '059ec0cc3a3647e542bf4ff93fd1216f26fd8844'
+  time: 2022-09-21 10:45:52.000000000 +12:00
+  path: lib/protocol/hpack/huffman.rb
+  author:
+    name: Daniel Morrison
+    email: daniel@collectiveidea.com
+    time: 2022-09-20 18:45:52.000000000 -04:00
+  original_path: lib/http/2/huffman.rb
