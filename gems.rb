@@ -13,10 +13,12 @@ gem "rake", "~> 10.0"
 group :test do
 	gem "rspec", "~> 3.0"
 	gem "covered"
+	
+	gem "bake-test"
+	gem "bake-test-external"
 end
 
 group :maintenance, optional: true do
 	gem "bake-gem"
-	
-	gem "bake-modernize", path: "../../ioquatix/bake-modernize"
+	gem "bake-modernize"
 end
