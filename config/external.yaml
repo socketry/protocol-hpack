@@ -1,0 +1,3 @@
+protocol-http2:
+  url: https://github.com/socketry/protocol-http2
+  command: bundle exec bake test
