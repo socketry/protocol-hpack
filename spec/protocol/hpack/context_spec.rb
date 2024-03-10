@@ -11,6 +11,19 @@ RSpec.describe Protocol::HPACK::Context do
 	it 'should be initialized with empty headers' do
 		expect(context.table).to be_empty
 	end
+	
+	context '#dup' do
+		it "duplicates mutable table state" do
+			context.instance_eval do
+				add_to_table(['test1', '1'])
+				add_to_table(['test2', '2'])
+			end
+
+			dup = context.dup
+			expect(dup.table).to eq context.table
+			expect(dup.table).not_to be context.table
+		end
+	end
 
 	context 'processing' do
 		[
