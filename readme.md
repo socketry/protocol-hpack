@@ -4,50 +4,11 @@ Provides a compressor and decompressor for HTTP 2.0 headers, HPACK, as defined b
 
 [![Development Status](https://github.com/socketry/protocol-hpack/workflows/Test/badge.svg)](https://github.com/socketry/protocol-hpack/actions?workflow=Test)
 
-## Installation
-
-Add this line to your application's Gemfile:
-
-``` ruby
-gem 'protocol-hpack'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install protocol-hpack
-
 ## Usage
 
-### Compressing Headers
+Please see the [project documentation](https://socketry.github.io/protocol-hpack/) for more details.
 
-``` ruby
-require 'protocol/hpack'
-
-buffer = String.new.b
-compressor = Protocol::HPACK::Compressor.new(buffer)
-
-compressor.encode([['content-length', '5']])
-=> "\\\x015"
-```
-
-### Decompressing Headers
-
-Reusing `buffer` from above:
-
-``` ruby
-require 'protocol/hpack'
-
-# Buffer from above...
-buffer = "\\\x015"
-decompressor = Protocol::HPACK::Decompressor.new(buffer)
-
-decompressor.decode
-=> [["content-length", "5"]]
-```
+  - [Getting Started](https://socketry.github.io/protocol-hpack/guides/getting-started/index) - This guide explains how to use the `protocol-hpack` gem to compress and decompress HTTP/2 headers using HPACK.
 
 ## Contributing
 
@@ -66,3 +27,8 @@ This project uses the [Developer Certificate of Origin](https://developercertifi
 ### Contributor Covenant
 
 This project is governed by the [Contributor Covenant](https://www.contributor-covenant.org/). All contributors and participants agree to abide by its terms.
+
+## See Also
+
+- [protocol-http2](https://github.com/socketry/protocol-http2) - Provides an HTTP/2 client and server implementation.
+- [async-http](https://github.com/socketry/async-http) - Provides a complete HTTP client and server implementation on top of Async.

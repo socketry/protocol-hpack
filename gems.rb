@@ -21,4 +21,6 @@ end
 group :maintenance, optional: true do
 	gem "bake-gem"
 	gem "bake-modernize"
+	
+	gem "utopia-project"
 end
