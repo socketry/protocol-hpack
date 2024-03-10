@@ -54,10 +54,6 @@ module Protocol
 			attr :context
 			attr :offset
 			
-			def write_byte(byte)
-				@buffer << byte.chr
-			end
-			
 			def write_bytes(bytes)
 				@buffer << bytes
 			end
