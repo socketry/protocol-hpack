@@ -24,7 +24,23 @@ RSpec.describe Protocol::HPACK::Context do
 			expect(dup.table).not_to be context.table
 		end
 	end
-
+	
+	context '#dereference' do
+		it "raises an error if the index is out of bounds" do
+			expect do
+				context.dereference(1024)
+			end.to raise_error(Protocol::HPACK::Error)
+		end
+	end
+	
+	context '#decode' do
+		it "raises an error if the command is invalid" do
+			expect do
+				context.decode(name: 0, value: 'test', type: :invalid)
+			end.to raise_error(Protocol::HPACK::Error)
+		end
+	end
+	
 	context 'processing' do
 		[
 			['no indexing', :no_index],
