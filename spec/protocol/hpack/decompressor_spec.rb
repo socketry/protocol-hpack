@@ -51,4 +51,16 @@ RSpec.describe Protocol::HPACK::Decompressor do
 			end
 		end
 	end
+	
+	context "with trailing table size command" do
+		subject {described_class.new(buffer, table_size_limit: 256)}
+		
+		it "should raise error" do
+			compressor.write_header({type: :change_table_size, value: 256})
+			
+			expect do
+				subject.decode
+			end.to raise_error(Protocol::HPACK::CompressionError, /Trailing table size update/)
+		end
+	end
 end
