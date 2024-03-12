@@ -12,12 +12,17 @@ module Protocol
 	# - http://tools.ietf.org/html/draft-ietf-httpbis-header-compression-10
 	module HPACK
 		# Header representation as defined by the spec.
+		NO_INDEX_TYPE = {prefix: 4, pattern: 0x00}.freeze
+		NEVER_INDEXED_TYPE = {prefix: 4, pattern: 0x10}.freeze
+		CHANGE_TABLE_SIZE_TYPE = {prefix: 5, pattern: 0x20}.freeze
+		INCREMENTAL_TYPE = {prefix: 6, pattern: 0x40}.freeze
+		INDEXED_TYPE = {prefix: 7, pattern: 0x80}.freeze
 		HEADER_REPRESENTATION = {
-			indexed: {prefix: 7, pattern: 0x80},
-			incremental: {prefix: 6, pattern: 0x40},
-			no_index: {prefix: 4, pattern: 0x00},
-			never_indexed: {prefix: 4, pattern: 0x10},
-			change_table_size: {prefix: 5, pattern: 0x20},
+			indexed: INDEXED_TYPE,
+			incremental: INCREMENTAL_TYPE,
+			no_index: NO_INDEX_TYPE,
+			never_indexed: NEVER_INDEXED_TYPE,
+			change_table_size: CHANGE_TABLE_SIZE_TYPE
 		}
 		
 		# To decompress header blocks, a decoder only needs to maintain a
@@ -280,8 +285,8 @@ module Protocol
 			
 			# Returns current table size in octets
 			# @return [Integer]
-			def current_table_size
-				@table.sum{|k, v| k.bytesize + v.bytesize + 32}
+			def compute_current_table_size
+				@table.sum { |k, v| k.bytesize + v.bytesize + 32 }
 			end
 
 			private
@@ -296,6 +301,11 @@ module Protocol
 				command.freeze
 				
 				@table.unshift(command)
+				@current_table_size += entry_size(command)
+			end
+
+			def entry_size(e)
+				e[0].bytesize + e[1].bytesize + 32
 			end
 
 			# To keep the dynamic table size lower than or equal to @table_size,
@@ -304,14 +314,16 @@ module Protocol
 			# @param command [Hash]
 			# @return [Boolean] whether +command+ fits in the dynamic table.
 			def size_check(command)
-				cursize = current_table_size
+				
+				@current_table_size ||= compute_current_table_size
+
 				cmdsize = command.nil? ? 0 : command[0].bytesize + command[1].bytesize + 32
 
-				while cursize + cmdsize > @table_size
+				while @current_table_size + cmdsize > @table_size
 					break if @table.empty?
 
 					e = @table.pop
-					cursize -= e[0].bytesize + e[1].bytesize + 32
+					@current_table_size -= e[0].bytesize + e[1].bytesize + 32
 				end
 
 				cmdsize <= @table_size
