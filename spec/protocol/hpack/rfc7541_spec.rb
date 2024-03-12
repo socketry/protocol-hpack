@@ -54,7 +54,7 @@ RSpec.describe "RFC7541" do
 						end
 						
 						it 'should compute header table size' do
-							expect(context.current_table_size).to eq example[:streams][nth][:table_size]
+							expect(context.compute_current_table_size).to eq example[:streams][nth][:table_size]
 						end
 					end
 				end
@@ -95,7 +95,7 @@ RSpec.describe "RFC7541" do
 						end
 						
 						it 'should compute header table size' do
-							expect(context.current_table_size).to eq example[:streams][nth][:table_size]
+							expect(context.compute_current_table_size).to eq example[:streams][nth][:table_size]
 						end
 					end
 				end
