@@ -7,12 +7,12 @@
 # Copyright, 2016, by George Ulmer.
 # Copyright, 2018-2024, by Samuel Williams.
 
-require_relative '../lib/http/hpack/huffman'
+require_relative '../lib/protocol/hpack/huffman'
 
 require 'set'
 
 module Huffman
-	BITS_AT_ONCE = HTTP::HPACK::Huffman::BITS_AT_ONCE
+	BITS_AT_ONCE = Protocol::HPACK::Huffman::BITS_AT_ONCE
 	EOS = 256
 
 	class Node
@@ -49,7 +49,7 @@ module Huffman
 
 		def self.generate_tree
 			@root = new(0)
-			HTTP::HPACK::Huffman::CODES.each_with_index do |c, chr|
+			Protocol::HPACK::Huffman::CODES.each_with_index do |c, chr|
 				code, len = c
 				@root.add(code, len, chr)
 			end
@@ -71,7 +71,7 @@ module Huffman
 
 				(1 << BITS_AT_ONCE).times do |input|
 					n = node
-					emit = ''
+					emit = +''
 					(BITS_AT_ONCE - 1).downto(0) do |i|
 						bit = (input & (1 << i)).zero? ? 0 : 1
 						n = n.next[bit]
@@ -107,7 +107,7 @@ module Huffman
 				id += 1
 			end
 
-			File.open(File.expand_path('../lib/http/hpack/huffman/machine.rb', File.dirname(__FILE__)), 'w') do |f|
+			File.open(File.expand_path('../lib/protocol/hpack/huffman/machine.rb', File.dirname(__FILE__)), 'w') do |f|
 				f.print <<HEADER
 # frozen_string_literal: true
 
