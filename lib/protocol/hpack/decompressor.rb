@@ -89,7 +89,7 @@ module Protocol
 				
 				raise CompressionError, "Invalid string length, got #{string.bytesize}, expecting #{length}!" unless string.bytesize == length
 				
-				string = Huffman.new.decode(string) if huffman
+				string = Huffman.decode(string) if huffman
 				
 				return string.force_encoding(Encoding::UTF_8)
 			end
