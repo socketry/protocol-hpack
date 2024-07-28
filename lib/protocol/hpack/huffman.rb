@@ -39,8 +39,9 @@ module Protocol
 
 				mask = (1 << BITS_AT_ONCE) - 1
 				buffer.each_byte do |c|
-					(8 / BITS_AT_ONCE - 1).downto(0) do |shift|
-						branch = (c >> (shift * BITS_AT_ONCE)) & mask
+					shift = BITS_AT_ONCE
+					while shift >= 0
+						branch = (c >> shift) & mask
 						
 						# MACHINE[state] = [final, [transitions]]
 						#  [final] unfinished bits so far are prefix of the EOS code.
@@ -52,6 +53,7 @@ module Protocol
 						raise CompressionError, 'Huffman decode error (EOS found)' if value == EOS
 						
 						emit << value.chr if value
+						shift -= BITS_AT_ONCE
 					end
 				end
 				# Check whether partial input is correctly filled
