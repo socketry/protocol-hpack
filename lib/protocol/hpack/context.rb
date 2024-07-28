@@ -255,18 +255,18 @@ module Protocol
 				name_only = nil
 
 				if @index == :all || @index == :static
-					needs_name_lookup = if (values_and_indices = STATIC_EXACT_LOOKUP[name])
-																values_and_indices.each do |known_value, index|
-																	if value == known_value
-																		exact = index
-																		break
-																	end
-																end
-
-																exact.nil?
-															else
-																true
-															end
+					if (values_and_indices = STATIC_EXACT_LOOKUP[name])
+						values_and_indices.each do |known_value, index|
+							if value == known_value
+								exact = index
+								break
+							end
+						end
+						
+						needs_name_lookup = exact.nil?
+					else
+						needs_name_lookup = true
+					end
 
 					if needs_name_lookup && (static_value = STATIC_NAME_LOOKUP[name])
 						name_only = static_value
