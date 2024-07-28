@@ -95,7 +95,20 @@ module Protocol
 				["via", ""],
 				["www-authenticate", ""],
 			].each(&:freeze).freeze
-			
+
+			STATIC_EXACT_LOOKUP = {}
+			STATIC_NAME_LOOKUP = {}
+
+			STATIC_TABLE.each_with_index do |(name, value), i|
+				exact_header_values = (STATIC_EXACT_LOOKUP[name] ||= [])
+				exact_header_values << [value, i]
+				STATIC_NAME_LOOKUP[name] = i if STATIC_NAME_LOOKUP[name].nil?
+			end
+
+			STATIC_EXACT_LOOKUP.each {|k, v| v.freeze}
+			STATIC_EXACT_LOOKUP.freeze
+			STATIC_NAME_LOOKUP.freeze
+
 			# Initializes compression context with appropriate client/server defaults and maximum size of the dynamic table.
 			#
 			# @param table [Array] Table of header key-value pairs.
@@ -234,29 +247,42 @@ module Protocol
 			#  :static  Use static table only.
 			#  :all     Use all of them.
 			#
-			# @param header [Array] +[name, value]+
+			# @param name [String]
+			# @param value [String]
 			# @return [Hash] command
-			def add_command(*header)
+			def add_command(name, value)
 				exact = nil
 				name_only = nil
 
-				if [:all, :static].include?(@index)
-					STATIC_TABLE.each_index do |i|
-						if STATIC_TABLE[i] == header
-							exact ||= i
-							break
-						elsif STATIC_TABLE[i].first == header.first
-							name_only ||= i
+				if @index == :all || @index == :static
+					if (values_and_indices = STATIC_EXACT_LOOKUP[name])
+						values_and_indices.each do |known_value, index|
+							if value == known_value
+								exact = index
+								break
+							end
 						end
+						
+						needs_name_lookup = exact.nil?
+					else
+						needs_name_lookup = true
+					end
+
+					if needs_name_lookup && (static_value = STATIC_NAME_LOOKUP[name])
+						name_only = static_value
 					end
 				end
-				if [:all].include?(@index) && !exact
+
+				if @index == :all && !exact
 					@table.each_index do |i|
-						if @table[i] == header
-							exact ||= i + STATIC_TABLE.size
-							break
-						elsif @table[i].first == header.first
-							name_only ||= i + STATIC_TABLE.size
+						entry = @table[i]
+						if entry.first == name
+							if entry.last == value
+								exact ||= i + STATIC_TABLE.size
+								break
+							else
+								name_only ||= i + STATIC_TABLE.size
+							end
 						end
 					end
 				end
@@ -264,9 +290,9 @@ module Protocol
 				if exact
 					{name: exact, type: :indexed}
 				elsif name_only
-					{name: name_only, value: header.last, type: :incremental}
+					{name: name_only, value: value, type: :incremental}
 				else
-					{name: header.first, value: header.last, type: :incremental}
+					{name: name, value: value, type: :incremental}
 				end
 			end
 
