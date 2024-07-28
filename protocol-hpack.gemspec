@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
 	spec.version = Protocol::HPACK::VERSION
 	
 	spec.summary = "A compresssor and decompressor for HTTP/2's HPACK format."
-	spec.authors = ["Samuel Williams", "Ilya Grigorik", "Tamir Duberstein", "Kaoru Maeda", "Tiago Cardoso", "Byron Formwalt", "Cyril Roelandt", "Daniel Morrison", "Felix Yan", "George Ulmer", "Jingyi Chen", "Justin Mazzocchi", "Kenichi Nakamura", "Kien Nguyen Trung", "Maruth Goyal", "Nathan Froyd", "Olle Jonsson"]
+	spec.authors = ["Samuel Williams", "Ilya Grigorik", "Tamir Duberstein", "Nathan Froyd", "Kaoru Maeda", "Tiago Cardoso", "Byron Formwalt", "Cyril Roelandt", "Daniel Morrison", "Felix Yan", "George Ulmer", "Jingyi Chen", "Justin Mazzocchi", "Kenichi Nakamura", "Kien Nguyen Trung", "Maruth Goyal", "Olle Jonsson"]
 	spec.license = "MIT"
 	
 	spec.cert_chain  = ['release.cert']

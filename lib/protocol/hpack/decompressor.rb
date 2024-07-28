@@ -3,6 +3,7 @@
 # Released under the MIT License.
 # Copyright, 2018-2024, by Samuel Williams.
 # Copyright, 2024, by Maruth Goyal.
+# Copyright, 2024, by Nathan Froyd.
 
 require_relative 'context'
 require_relative 'huffman'

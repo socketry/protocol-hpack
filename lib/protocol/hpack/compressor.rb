@@ -11,6 +11,7 @@
 # Copyright, 2018, by Kenichi Nakamura.
 # Copyright, 2019, by Jingyi Chen.
 # Copyright, 2020, by Justin Mazzocchi.
+# Copyright, 2024, by Nathan Froyd.
 
 require_relative 'context'
 require_relative 'huffman'

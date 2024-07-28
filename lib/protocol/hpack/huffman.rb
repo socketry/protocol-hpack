@@ -6,6 +6,7 @@
 # Copyright, 2015, by Tamir Duberstein.
 # Copyright, 2018-2024, by Samuel Williams.
 # Copyright, 2022, by Daniel Morrison.
+# Copyright, 2024, by Nathan Froyd.
 
 require_relative 'huffman/machine'
 require_relative 'error'
