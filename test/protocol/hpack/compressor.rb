@@ -15,46 +15,46 @@ require 'protocol/hpack/decompressor'
 
 require 'json'
 
-RSpec.describe Protocol::HPACK::Compressor do
-	describe '#write_integer' do
+describe Protocol::HPACK::Compressor do
+	with '#write_integer' do
 		let(:buffer) {String.new.b}
-		subject {described_class.new(buffer)}
+		let(:compressor) {subject.new(buffer)}
 		
-		context '0-bit prefix' do
+		with '0-bit prefix' do
 			it "can encode the value 10" do
-				subject.write_integer(10, 0)
+				compressor.write_integer(10, 0)
 				expect(buffer).to be == [10].pack('C')
 			end
 			
 			it "can encode the value 1337" do
-				subject.write_integer(1337, 0)
+				compressor.write_integer(1337, 0)
 				expect(buffer).to be == [128 + 57, 10].pack('C*')
 			end
 		end
 		
-		context '5-bit prefix' do
+		with '5-bit prefix' do
 			it "can encode the value 10" do
-				subject.write_integer(10, 5)
+				compressor.write_integer(10, 5)
 				expect(buffer).to be == [10].pack('C')
 			end
 			
 			it "can encode the value 1337" do
-				subject.write_integer(1337, 5)
+				compressor.write_integer(1337, 5)
 				expect(buffer).to be == [31, 128 + 26, 10].pack('C*')
 			end
 		end
 	end
 	
-	describe '#write_string' do
+	with '#write_string' do
 		[
 			['with huffman', :always, 0x80],
 			['without huffman', :never, 0],
 		].each do |description, huffman, msb|
-			context description do
+			with description do
 				let(:context) {Protocol::HPACK::Context.new(huffman: huffman)}
 				let(:buffer) {String.new.b}
 				
-				subject {Protocol::HPACK::Compressor.new(buffer, context)}
+				let(:compressor) {Protocol::HPACK::Compressor.new(buffer, context)}
 				let(:decompressor) {Protocol::HPACK::Decompressor.new(buffer, context)}
 				
 				[
@@ -63,20 +63,20 @@ RSpec.describe Protocol::HPACK::Compressor do
 					['long utf-8 strings', 'éáűőúöüó€' * 100],
 				].each do |datatype, plain|
 					it "should handle #{datatype} #{description}" do
-						subject.write_string(plain)
-						expect(buffer.getbyte(0) & 0x80).to eq msb
+						compressor.write_string(plain)
+						expect(buffer.getbyte(0) & 0x80).to be == msb
 						
-						expect(decompressor.read_string).to eq plain
+						expect(decompressor.read_string).to be == plain
 					end
 				end
 			end
 		end
 		
-		context 'choosing shorter representation' do
+		with 'choosing shorter representation' do
 			let(:context) {Protocol::HPACK::Context.new(huffman: :shorter)}
 			let(:buffer) {String.new.b}
 			
-			subject {Protocol::HPACK::Compressor.new(buffer, context)}
+			let(:compressor) {Protocol::HPACK::Compressor.new(buffer, context)}
 			
 			[
 				['日本語', :plain],
@@ -84,14 +84,14 @@ RSpec.describe Protocol::HPACK::Compressor do
 				['xq', :plain],   # prefer plain if equal size
 			].each do |string, choice|
 				it "should return #{choice} representation" do
-					subject.write_string(string)
-					expect(buffer.getbyte(0) & 0x80).to eq(choice == :plain ? 0 : 0x80)
+					compressor.write_string(string)
+					expect(buffer.getbyte(0) & 0x80).to be == (choice == :plain ? 0 : 0x80)
 				end
 			end
 		end
 	end
 	
-	describe '#encode' do
+	with '#encode' do
 		let(:path) {File.expand_path("sequence1.json", __dir__)}
 		let(:sequence) {JSON.parse(File.read(path))}
 		

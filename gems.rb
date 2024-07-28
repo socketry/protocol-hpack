@@ -8,19 +8,21 @@ source "https://rubygems.org"
 # Specify your gem's dependencies in protocol-hpack.gemspec
 gemspec
 
-gem "rake", "~> 10.0"
-
-group :test do
-	gem "rspec", "~> 3.0"
-	gem "covered"
-	
-	gem "bake-test"
-	gem "bake-test-external"
-end
-
 group :maintenance, optional: true do
 	gem "bake-gem"
 	gem "bake-modernize"
 	
+	gem "rake", "~> 10.0"
+	
 	gem "utopia-project"
+end
+
+group :test do
+	gem "sus"
+	gem "covered"
+	gem "decode"
+	gem "rubocop"
+	
+	gem "bake-test"
+	gem "bake-test-external"
 end

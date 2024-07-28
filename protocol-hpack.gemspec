@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
 	spec.version = Protocol::HPACK::VERSION
 	
 	spec.summary = "A compresssor and decompressor for HTTP/2's HPACK format."
-	spec.authors = ["Samuel Williams", "Ilya Grigorik", "Tamir Duberstein", "Kaoru Maeda", "Tiago Cardoso", "Byron Formwalt", "Cyril Roelandt", "Daniel Morrison", "Felix Yan", "George Ulmer", "Jingyi Chen", "Justin Mazzocchi", "Kenichi Nakamura", "Kien Nguyen Trung", "Olle Jonsson"]
+	spec.authors = ["Samuel Williams", "Ilya Grigorik", "Tamir Duberstein", "Kaoru Maeda", "Tiago Cardoso", "Byron Formwalt", "Cyril Roelandt", "Daniel Morrison", "Felix Yan", "George Ulmer", "Jingyi Chen", "Justin Mazzocchi", "Kenichi Nakamura", "Kien Nguyen Trung", "Maruth Goyal", "Nathan Froyd", "Olle Jonsson"]
 	spec.license = "MIT"
 	
 	spec.cert_chain  = ['release.cert']
@@ -17,9 +17,10 @@ Gem::Specification.new do |spec|
 	
 	spec.metadata = {
 		"documentation_uri" => "https://socketry.github.io/protocol-hpack/",
+		"source_code_uri" => "https://github.com/socketry/http-hpack.git",
 	}
 	
 	spec.files = Dir.glob(['{lib,tasks}/**/*', '*.md'], File::FNM_DOTMATCH, base: __dir__)
 	
-	spec.required_ruby_version = ">= 3.0"
+	spec.required_ruby_version = ">= 3.1"
 end

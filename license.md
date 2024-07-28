@@ -15,6 +15,8 @@ Copyright, 2020, by Olle Jonsson.
 Copyright, 2020, by Justin Mazzocchi.  
 Copyright, 2022, by Daniel Morrison.  
 Copyright, 2022, by Felix Yan.  
+Copyright, 2024, by Maruth Goyal.  
+Copyright, 2024, by Nathan Froyd.  
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

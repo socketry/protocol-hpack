@@ -12,7 +12,7 @@ require 'protocol/hpack/decompressor'
 
 require 'json'
 
-RSpec.describe Protocol::HPACK::Decompressor do
+describe Protocol::HPACK::Decompressor do
 	folders = %w(
 		go-hpack
 		haskell-http2-diff
@@ -34,7 +34,7 @@ RSpec.describe Protocol::HPACK::Decompressor do
 	folders.each do |folder|
 		root = File.expand_path("fixtures/#{folder}", __dir__)
 		
-		context folder.to_s, if: File.directory?(root) do
+		with folder.to_s, if: File.directory?(root) do
 			Dir.glob(File.join(root, "*.json")) do |path|
 				it "should decode #{File.basename(path)}" do
 					story = JSON.parse(File.read(path))
@@ -50,15 +50,15 @@ RSpec.describe Protocol::HPACK::Decompressor do
 						headers = c['headers'].flat_map(&:to_a)
 						
 						emitted = decompressor.decode
-						expect(emitted).to eq headers
+						expect(emitted).to be == headers
 					end
 				end
 			end
 		end
 	end
-end if ENV['COVERAGE'].nil?
+end
 
-RSpec.describe Protocol::HPACK::Compressor do
+describe Protocol::HPACK::Compressor do
 	root = File.expand_path('fixtures/raw-data', __dir__)
 	
 	let(:buffer) {String.new.b}
@@ -67,8 +67,8 @@ RSpec.describe Protocol::HPACK::Compressor do
 		[4096, 512].each do |table_size|
 			options = {table_size: table_size}
 			options.update(encoding_options)
-
-			context "with #{mode} mode and table_size #{table_size}" do
+			
+			with "#{mode} mode and table_size #{table_size}" do
 				Dir.glob(File.join(root, "*.json")) do |path|
 					it "should encode #{File.basename(path)}" do
 						story = JSON.parse(File.read(path))
@@ -83,11 +83,11 @@ RSpec.describe Protocol::HPACK::Compressor do
 							compressor.encode(headers)
 							
 							decoded = decompressor.decode
-							expect(decoded).to eq headers
+							expect(decoded).to be == headers
 						end
 					end
 				end
 			end
 		end
 	end
-end if ENV['COVERAGE'].nil?
+end

@@ -6,6 +6,7 @@
 # Copyright, 2015, by Ilya Grigorik.
 # Copyright, 2016, by George Ulmer.
 # Copyright, 2018-2024, by Samuel Williams.
+# Copyright, 2024, by Nathan Froyd.
 
 require_relative '../lib/protocol/hpack/huffman'
 

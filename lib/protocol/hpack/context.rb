@@ -2,6 +2,7 @@
 
 # Released under the MIT License.
 # Copyright, 2018-2024, by Samuel Williams.
+# Copyright, 2024, by Maruth Goyal.
 
 require_relative 'huffman'
 

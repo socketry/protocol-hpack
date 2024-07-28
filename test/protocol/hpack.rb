@@ -5,8 +5,8 @@
 
 require 'protocol/hpack'
 
-RSpec.describe Protocol::HPACK do
+describe Protocol::HPACK do
 	it "has a version number" do
-		expect(Protocol::HPACK::VERSION).not_to be nil
+		expect(Protocol::HPACK::VERSION).to be =~ /\d+\.\d+\.\d+/
 	end
 end
