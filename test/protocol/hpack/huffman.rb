@@ -9,8 +9,6 @@
 require 'protocol/hpack/huffman'
 
 describe Protocol::HPACK::Huffman do
-	let(:huffman) {subject.new}
-	
 	huffman_examples = [ # plain, encoded
 		['www.example.com', 'f1e3c2e5f23a6ba0ab90f4ff'],
 		['no-cache',        'a8eb10649cbf'],
@@ -20,7 +18,7 @@ describe Protocol::HPACK::Huffman do
 	with '#encode' do
 		huffman_examples.each do |plain, encoded|
 			it "should encode #{plain} into #{encoded}" do
-				expect(huffman.encode(plain).unpack1('H*')).to be == encoded
+				expect(subject.encode(plain).unpack1('H*')).to be == encoded
 			end
 		end
 	end
@@ -28,7 +26,7 @@ describe Protocol::HPACK::Huffman do
 	with '#decode' do
 		huffman_examples.each do |plain, encoded|
 			it "should decode #{encoded} into #{plain}" do
-				expect(huffman.decode([encoded].pack('H*'))).to be == plain
+				expect(subject.decode([encoded].pack('H*'))).to be == plain
 			end
 		end
 
@@ -42,8 +40,8 @@ describe Protocol::HPACK::Huffman do
 			'UTF-8でエンコードした日本語文字列',
 		].each do |string|
 			it "should encode then decode '#{string}' into the same" do
-				encoded = huffman.encode(string.b)
-				expect(huffman.decode(encoded)).to be == string.b
+				encoded = subject.encode(string.b)
+				expect(subject.decode(encoded)).to be == string.b
 			end
 		end
 		
@@ -51,7 +49,7 @@ describe Protocol::HPACK::Huffman do
 			(2**16).times do |n|
 				string = [n].pack('V')[0, 2].b
 				
-				expect(huffman.decode(huffman.encode(string))).to be == string
+				expect(subject.decode(subject.encode(string))).to be == string
 			end
 		end
 		
@@ -60,7 +58,7 @@ describe Protocol::HPACK::Huffman do
 			encoded = [encoded].pack('H*')
 			
 			expect do
-				huffman.decode(encoded[0...-1].b)
+				subject.decode(encoded[0...-1].b)
 			end.to raise_exception(Protocol::HPACK::CompressionError, message: be =~ /EOS invalid/)
 		end
 		
@@ -70,7 +68,7 @@ describe Protocol::HPACK::Huffman do
 			encoded = [encoded].pack('H*')
 			
 			expect do
-				huffman.decode(encoded.b)
+				subject.decode(encoded.b)
 			end.to raise_exception(Protocol::HPACK::CompressionError, message: be =~ /EOS invalid/)
 		end
 		
@@ -80,7 +78,7 @@ describe Protocol::HPACK::Huffman do
 			encoded = [encoded].pack('H*')
 			
 			expect do
-				huffman.decode(encoded.b)
+				subject.decode(encoded.b)
 			end.to raise_exception(Protocol::HPACK::CompressionError, message: be =~ /EOS invalid/)
 		end
 		
@@ -89,7 +87,7 @@ describe Protocol::HPACK::Huffman do
 			encoded = ['1c7fffffffff'].pack('H*')
 			
 			expect do
-				huffman.decode(encoded.b)
+				subject.decode(encoded.b)
 			end.to raise_exception(Protocol::HPACK::CompressionError, message: be =~ /EOS found/)
 		end
 	end

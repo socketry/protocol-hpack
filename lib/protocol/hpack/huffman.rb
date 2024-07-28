@@ -22,7 +22,7 @@ module Protocol
 			#
 			# @param str [String]
 			# @return [String] binary string
-			def encode(str)
+			def self.encode(str)
 				bitstring = str.each_byte.map {|chr| ENCODE_TABLE[chr]}.join
 				bitstring << '1' * ((8 - bitstring.size) % 8)
 				[bitstring].pack('B*')
@@ -33,7 +33,7 @@ module Protocol
 			# @param buf [Buffer]
 			# @return [String] binary string
 			# @raise [CompressionError] when Huffman coded string is malformed
-			def decode(buffer)
+			def self.decode(buffer)
 				emit = String.new.b
 				state = 0 # start state
 

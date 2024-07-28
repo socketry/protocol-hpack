@@ -118,7 +118,7 @@ module Protocol
 			# @return [String] binary string
 			def write_string(string, huffman = self.huffman)
 				if huffman != :never
-					encoded = Huffman.new.encode(string)
+					encoded = Huffman.encode(string)
 					
 					if huffman == :shorter and encoded.bytesize >= string.bytesize
 						encoded = nil
