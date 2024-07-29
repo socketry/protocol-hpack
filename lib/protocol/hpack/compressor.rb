@@ -75,22 +75,19 @@ module Protocol
 			# @param bits [Integer] number of available bits
 			# @return [String] binary string
 			def write_integer(value, bits)
-				limit = 2**bits - 1
+				limit = (1 << bits) - 1
 				
-				return write_bytes([value].pack('C')) if value < limit
+				return @buffer << value if value < limit
 				
-				bytes = []
-				bytes.push(limit) unless bits.zero?
+				@buffer << limit unless bits.zero?
 				
 				value -= limit
 				while value >= 128
-					bytes.push((value % 128) + 128)
+					@buffer << ((value & 0x7f) + 128)
 					value /= 128
 				end
 				
-				bytes.push(value)
-				
-				write_bytes(bytes.pack('C*'))
+				@buffer << value
 			end
 			
 			def huffman
