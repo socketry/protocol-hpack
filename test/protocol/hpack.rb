@@ -3,7 +3,7 @@
 # Released under the MIT License.
 # Copyright, 2018-2024, by Samuel Williams.
 
-require 'protocol/hpack'
+require "protocol/hpack"
 
 describe Protocol::HPACK do
 	it "has a version number" do

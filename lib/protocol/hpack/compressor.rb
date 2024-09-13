@@ -13,8 +13,8 @@
 # Copyright, 2020, by Justin Mazzocchi.
 # Copyright, 2024, by Nathan Froyd.
 
-require_relative 'context'
-require_relative 'huffman'
+require_relative "context"
+require_relative "huffman"
 
 module Protocol
 	module HPACK

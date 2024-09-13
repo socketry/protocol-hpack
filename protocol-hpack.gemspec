@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
 	spec.authors = ["Samuel Williams", "Ilya Grigorik", "Tamir Duberstein", "Nathan Froyd", "Kaoru Maeda", "Tiago Cardoso", "Byron Formwalt", "Cyril Roelandt", "Daniel Morrison", "Felix Yan", "George Ulmer", "Jingyi Chen", "Justin Mazzocchi", "Kenichi Nakamura", "Kien Nguyen Trung", "Maruth Goyal", "Olle Jonsson"]
 	spec.license = "MIT"
 	
-	spec.cert_chain  = ['release.cert']
-	spec.signing_key = File.expand_path('~/.gem/release.pem')
+	spec.cert_chain  = ["release.cert"]
+	spec.signing_key = File.expand_path("~/.gem/release.pem")
 	
 	spec.homepage = "https://github.com/socketry/http-hpack"
 	
@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
 		"source_code_uri" => "https://github.com/socketry/http-hpack.git",
 	}
 	
-	spec.files = Dir.glob(['{lib,tasks}/**/*', '*.md'], File::FNM_DOTMATCH, base: __dir__)
+	spec.files = Dir.glob(["{lib,tasks}/**/*", "*.md"], File::FNM_DOTMATCH, base: __dir__)
 	
 	spec.required_ruby_version = ">= 3.1"
 end

@@ -5,8 +5,8 @@
 # Copyright, 2024, by Maruth Goyal.
 # Copyright, 2024, by Nathan Froyd.
 
-require_relative 'context'
-require_relative 'huffman'
+require_relative "context"
+require_relative "huffman"
 
 module Protocol
 	module HPACK

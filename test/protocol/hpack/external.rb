@@ -7,10 +7,10 @@
 # Copyright, 2016, by Kien Nguyen Trung.
 # Copyright, 2018-2024, by Samuel Williams.
 
-require 'protocol/hpack/compressor'
-require 'protocol/hpack/decompressor'
+require "protocol/hpack/compressor"
+require "protocol/hpack/decompressor"
 
-require 'json'
+require "json"
 
 describe Protocol::HPACK::Decompressor do
 	folders = %w(
@@ -39,15 +39,15 @@ describe Protocol::HPACK::Decompressor do
 				it "should decode #{File.basename(path)}" do
 					story = JSON.parse(File.read(path))
 					
-					cases = story['cases']
-					table_size = cases[0]['header_table_size'] || 4096
+					cases = story["cases"]
+					table_size = cases[0]["header_table_size"] || 4096
 					
 					context = Protocol::HPACK::Context.new(table_size: table_size)
 					decompressor = Protocol::HPACK::Decompressor.new(buffer, context)
 					
 					cases.each do |c|
-						buffer << [c['wire']].pack('H*').force_encoding(Encoding::BINARY)
-						headers = c['headers'].flat_map(&:to_a)
+						buffer << [c["wire"]].pack("H*").force_encoding(Encoding::BINARY)
+						headers = c["headers"].flat_map(&:to_a)
 						
 						emitted = decompressor.decode
 						expect(emitted).to be == headers
@@ -59,7 +59,7 @@ describe Protocol::HPACK::Decompressor do
 end
 
 describe Protocol::HPACK::Compressor do
-	root = File.expand_path('fixtures/raw-data', __dir__)
+	root = File.expand_path("fixtures/raw-data", __dir__)
 	
 	let(:buffer) {String.new.b}
 	
@@ -72,14 +72,14 @@ describe Protocol::HPACK::Compressor do
 				Dir.glob(File.join(root, "*.json")) do |path|
 					it "should encode #{File.basename(path)}" do
 						story = JSON.parse(File.read(path))
-						cases = story['cases']
+						cases = story["cases"]
 						
 						context = Protocol::HPACK::Context.new(**options)
 						compressor = Protocol::HPACK::Compressor.new(buffer, context)
 						decompressor = Protocol::HPACK::Decompressor.new(buffer)
 						
 						cases.each do |c|
-							headers = c['headers'].flat_map(&:to_a)
+							headers = c["headers"].flat_map(&:to_a)
 							compressor.encode(headers)
 							
 							decoded = decompressor.decode

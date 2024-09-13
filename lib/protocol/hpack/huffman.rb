@@ -8,8 +8,8 @@
 # Copyright, 2022, by Daniel Morrison.
 # Copyright, 2024, by Nathan Froyd.
 
-require_relative 'huffman/machine'
-require_relative 'error'
+require_relative "huffman/machine"
+require_relative "error"
 
 module Protocol
 	module HPACK
@@ -25,8 +25,8 @@ module Protocol
 			# @return [String] binary string
 			def self.encode(str)
 				bitstring = str.each_byte.map {|chr| ENCODE_TABLE[chr]}.join
-				bitstring << '1' * ((8 - bitstring.size) % 8)
-				[bitstring].pack('B*')
+				bitstring << "1" * ((8 - bitstring.size) % 8)
+				[bitstring].pack("B*")
 			end
 
 			# Decodes provided Huffman coded string.
@@ -51,7 +51,7 @@ module Protocol
 						#  [next] next state number.
 						value, state = MACHINE[state][branch]
 						
-						raise CompressionError, 'Huffman decode error (EOS found)' if value == EOS
+						raise CompressionError, "Huffman decode error (EOS found)" if value == EOS
 						
 						emit << value.chr if value
 						shift -= BITS_AT_ONCE
@@ -59,7 +59,7 @@ module Protocol
 				end
 				# Check whether partial input is correctly filled
 				unless state <= MAX_FINAL_STATE
-					raise CompressionError, 'Huffman decode error (EOS invalid)'
+					raise CompressionError, "Huffman decode error (EOS invalid)"
 				end
 				emit.force_encoding(Encoding::BINARY)
 			end
@@ -325,7 +325,7 @@ module Protocol
 				[0x3fffffff, 30],
 			].each(&:freeze).freeze
 			
-			ENCODE_TABLE = CODES.map {|c, l| [c].pack('N').unpack1('B*')[-l..-1]}.each(&:freeze).freeze
+			ENCODE_TABLE = CODES.map {|c, l| [c].pack("N").unpack1("B*")[-l..-1]}.each(&:freeze).freeze
 		end
 	end
 end

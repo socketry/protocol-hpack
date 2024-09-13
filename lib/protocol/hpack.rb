@@ -5,5 +5,5 @@
 
 require_relative "hpack/version"
 
-require_relative 'hpack/compressor'
-require_relative 'hpack/decompressor'
+require_relative "hpack/compressor"
+require_relative "hpack/decompressor"

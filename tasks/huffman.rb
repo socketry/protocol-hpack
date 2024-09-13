@@ -8,9 +8,9 @@
 # Copyright, 2018-2024, by Samuel Williams.
 # Copyright, 2024, by Nathan Froyd.
 
-require_relative '../lib/protocol/hpack/huffman'
+require_relative "../lib/protocol/hpack/huffman"
 
-require 'set'
+require "set"
 
 module Huffman
 	BITS_AT_ONCE = Protocol::HPACK::Huffman::BITS_AT_ONCE
@@ -72,7 +72,7 @@ module Huffman
 
 				(1 << BITS_AT_ONCE).times do |input|
 					n = node
-					emit = +''
+					emit = +""
 					(BITS_AT_ONCE - 1).downto(0) do |i|
 						bit = (input & (1 << i)).zero? ? 0 : 1
 						n = n.next[bit]
@@ -108,7 +108,7 @@ module Huffman
 				id += 1
 			end
 
-			File.open(File.expand_path('../lib/protocol/hpack/huffman/machine.rb', File.dirname(__FILE__)), 'w') do |f|
+			File.open(File.expand_path("../lib/protocol/hpack/huffman/machine.rb", File.dirname(__FILE__)), "w") do |f|
 				f.print <<HEADER
 # frozen_string_literal: true
 
@@ -137,7 +137,7 @@ HEADER
 							emit = bytes.first
 						end
 						"[#{emit.inspect}, #{state_id.fetch(transition.node)}]"
-					end.join(', ')
+					end.join(", ")
 					f.print(string)
 					f.print "],\n"
 				end
@@ -156,9 +156,9 @@ TAILER
 
 		# Test decoder
 		def self.decode(input)
-			emit = ''
+			emit = ""
 			n = root
-			nibbles = input.unpack('C*').flat_map {|b| [((b & 0xf0) >> 4), b & 0xf]}
+			nibbles = input.unpack("C*").flat_map {|b| [((b & 0xf0) >> 4), b & 0xf]}
 			until nibbles.empty?
 				nb = nibbles.shift
 				t = n.transitions[nb]

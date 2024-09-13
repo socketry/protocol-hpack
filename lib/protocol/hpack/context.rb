@@ -5,7 +5,7 @@
 # Copyright, 2024, by Maruth Goyal.
 # Copyright, 2024, by Nathan Froyd.
 
-require_relative 'huffman'
+require_relative "huffman"
 
 module Protocol
 	# Implementation of header compression for HTTP 2.0 (HPACK) format adapted

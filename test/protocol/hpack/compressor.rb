@@ -10,45 +10,45 @@
 # Copyright, 2018, by Kenichi Nakamura.
 # Copyright, 2019, by Jingyi Chen.
 
-require 'protocol/hpack/compressor'
-require 'protocol/hpack/decompressor'
+require "protocol/hpack/compressor"
+require "protocol/hpack/decompressor"
 
-require 'json'
+require "json"
 
 describe Protocol::HPACK::Compressor do
-	with '#write_integer' do
+	with "#write_integer" do
 		let(:buffer) {String.new.b}
 		let(:compressor) {subject.new(buffer)}
 		
-		with '0-bit prefix' do
+		with "0-bit prefix" do
 			it "can encode the value 10" do
 				compressor.write_integer(10, 0)
-				expect(buffer).to be == [10].pack('C')
+				expect(buffer).to be == [10].pack("C")
 			end
 			
 			it "can encode the value 1337" do
 				compressor.write_integer(1337, 0)
-				expect(buffer).to be == [128 + 57, 10].pack('C*')
+				expect(buffer).to be == [128 + 57, 10].pack("C*")
 			end
 		end
 		
-		with '5-bit prefix' do
+		with "5-bit prefix" do
 			it "can encode the value 10" do
 				compressor.write_integer(10, 5)
-				expect(buffer).to be == [10].pack('C')
+				expect(buffer).to be == [10].pack("C")
 			end
 			
 			it "can encode the value 1337" do
 				compressor.write_integer(1337, 5)
-				expect(buffer).to be == [31, 128 + 26, 10].pack('C*')
+				expect(buffer).to be == [31, 128 + 26, 10].pack("C*")
 			end
 		end
 	end
 	
-	with '#write_string' do
+	with "#write_string" do
 		[
-			['with huffman', :always, 0x80],
-			['without huffman', :never, 0],
+			["with huffman", :always, 0x80],
+			["without huffman", :never, 0],
 		].each do |description, huffman, msb|
 			with description do
 				let(:context) {Protocol::HPACK::Context.new(huffman: huffman)}
@@ -58,9 +58,9 @@ describe Protocol::HPACK::Compressor do
 				let(:decompressor) {Protocol::HPACK::Decompressor.new(buffer, context)}
 				
 				[
-					['ascii codepoints', 'abcdefghij'],
-					['utf-8 codepoints', 'éáűőúöüó€'],
-					['long utf-8 strings', 'éáűőúöüó€' * 100],
+					["ascii codepoints", "abcdefghij"],
+					["utf-8 codepoints", "éáűőúöüó€"],
+					["long utf-8 strings", "éáűőúöüó€" * 100],
 				].each do |datatype, plain|
 					it "should handle #{datatype} #{description}" do
 						compressor.write_string(plain)
@@ -72,16 +72,16 @@ describe Protocol::HPACK::Compressor do
 			end
 		end
 		
-		with 'choosing shorter representation' do
+		with "choosing shorter representation" do
 			let(:context) {Protocol::HPACK::Context.new(huffman: :shorter)}
 			let(:buffer) {String.new.b}
 			
 			let(:compressor) {Protocol::HPACK::Compressor.new(buffer, context)}
 			
 			[
-				['日本語', :plain],
-				['200', :huffman],
-				['xq', :plain],   # prefer plain if equal size
+				["日本語", :plain],
+				["200", :huffman],
+				["xq", :plain],   # prefer plain if equal size
 			].each do |string, choice|
 				it "should return #{choice} representation" do
 					compressor.write_string(string)
@@ -91,7 +91,7 @@ describe Protocol::HPACK::Compressor do
 		end
 	end
 	
-	with '#encode' do
+	with "#encode" do
 		let(:path) {File.expand_path("sequence1.json", __dir__)}
 		let(:sequence) {JSON.parse(File.read(path))}
 		
